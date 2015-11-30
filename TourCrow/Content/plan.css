@@ -1,0 +1,292 @@
+@import url(http://fonts.googleapis.com/css?family=Arimo:400,700);
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+p, span {
+  font-family: 'Arimo', sans-serif;
+  margin: 0px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.38;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arimo', sans-serif;
+  margin: 0px;
+  margin-top: 2px;
+}
+
+* {
+  font-family: 'Arimo', sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+/* Color declearation */
+body {
+  //background: #464646;
+}
+
+.plan-main-div {
+  width: 1025px;
+    position: relative;
+    margin: 0px auto;
+    margin-top: 30px;
+}
+.plan-main-div .plan-head {
+  width: inherit;
+  background: rgba(51, 51, 51, 0.11);
+  height: 100px;
+  height: auto;
+  padding: 10px;
+    margin-bottom: 10px;
+}
+.plan-main-div .plan-body {
+  width: inherit;
+  height: 490px;
+    margin: 0px auto;
+}
+.plan-main-div .plan-body .plan-suggestion {
+  width: 230px;
+  float: left;
+  height: auto;
+  position: relative;
+}
+.plan-main-div .plan-body .plan-day-list {
+  width: 555px;
+  float: left;
+  background: #ffffff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.plan-main-div .plan-body .plan-map {
+  width: 220px;
+  float: left;
+  background: blue;
+  height: 100px;
+}
+
+/* Left Side Sugg */
+.my-place, .recommend {
+  width: 50%;
+  float: left;
+  height: 35px;
+  text-align: center;
+  padding-top: 15px;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.place-recom-active {
+  background: #2477ff;
+  color: #ffffff;
+}
+.place-recom-active:before {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #2477ff;
+  position: absolute;
+  top: 48px;
+  float: left;
+  content: '';
+}
+
+.place-recom-inactive {
+  background: #ffdf7d;
+}
+
+.sugg-main-area {
+  width: 100%;
+  float: left;
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: #ffffff;
+}
+
+.sugg-element {
+  float: left;
+  width: 100px;
+  height: 125px;
+  margin-left: 10px;
+  margin-top: 15px;
+  box-shadow: 0px 0px 2px #888888;
+  border-radius: 3px;
+  padding: 1px;
+  transition: 400ms;
+  cursor: pointer;
+}
+.sugg-element .main-area-for-element {
+  position: absolute;
+  width: inherit;
+  height: auto;
+}
+.sugg-element .main-area-for-element img {
+  width: inherit;
+  height: 90px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.sugg-element .main-area-for-element p {
+  margin: 0px;
+  padding-left: 8px;
+  font-weight: bold;
+  color: #0946a0;
+}
+.sugg-element .main-area-for-element .action-for-sugg {
+  visibility: hidden;
+  z-index: 1;
+  margin-top: -108px;
+  margin-left: 20px;
+}
+.sugg-element .main-area-for-element .action-for-sugg .add-to-list {
+  color: #272727;
+  background: #ffc000;
+}
+.sugg-element .main-area-for-element .action-for-sugg .remove-from-list {
+  margin-top: 10px;
+  background: #ff1213;
+  color: #ffffff;
+}
+.sugg-element .main-area-for-element .action-for-sugg .add-to-list, .sugg-element .main-area-for-element .action-for-sugg .remove-from-list {
+  border: 0px;
+  box-shadow: 0px 0px 4px #545454;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.sugg-element:hover {
+  box-shadow: 0px 0px 4px #656565;
+}
+.sugg-element:hover .action-for-sugg {
+  visibility: visible;
+}
+
+/* Main List area */
+.plan-day-list .day-number-show {
+  width: 60px;
+  height: inherit;
+  margin-top: 12px;
+  margin-left: 5px;
+  color: #0946a0;
+  float: left;
+}
+.plan-day-list .day-number-show .no-day {
+  margin-left: 5px;
+  border: 1px solid #9a9a9a;
+  text-align: center;
+  height: 10px;
+  width: 10px;
+  padding: 10px;
+  border-radius: 100px;
+  margin-top: 10px;
+  cursor: pointer;
+  background: linear-gradient(to top, white 0%, #c8c8c8 100%);
+}
+.plan-day-list .day-number-show .no-day p {
+  margin-top: -4px;
+}
+.plan-day-list .day-number-show .no-day-active {
+  background: linear-gradient(to top, #2272f5 0%, #0e3c7d 100%);
+  color: #f2f2f2;
+  border: 1px solid #3d5a9a;
+}
+.plan-day-list .plan-main-element {
+  float: left;
+  width: 480px;
+  margin: 65px 5px 10px 5px;
+  height: inherit;
+}
+.plan-day-list .plan-main-element .plan-single-element {
+  height: auto;
+  width: inherit;
+  position: relative;
+  box-shadow: 0px 0px 5px #444;
+  margin-top: 10px;
+}
+.plan-day-list .plan-main-element .plan-single-element img {
+  height: 150px;
+  width: 150px;
+  float: left;
+  padding: 5px;
+}
+.plan-day-list .plan-main-element .plan-single-element .desc-elemetn {
+  float: left;
+  width: 300px;
+  padding: 6px 5px 5px 10px;
+}
+.plan-day-list .plan-main-element .plan-single-element .desc-elemetn h3 {
+  color: #0946a0;
+}
+.plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area {
+  width: 100%;
+  margin-top: 8px;
+}
+.plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .move-to-days, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .remove-place, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .more-info {
+  margin: 0px;
+  padding: 0px;
+  width: 30%;
+  font-size: .8em;
+  border-radius: 7px;
+  border: 0px;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 5px 0px;
+  background: #0946a0;
+  float: left;
+  text-align: center;
+  transition: 500ms;
+}
+.plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .move-to-days:hover, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .remove-place:hover, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .more-info:hover {
+  box-shadow: 0px 2px 6px #717171;
+}
+.plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .remove-place, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .more-info {
+  margin-left: 3%;
+}
+.plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .remove-place:after {
+  background-image: url("../img/remove.png");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+  padding: 2px 20px 0px 2px;
+  margin-left: 5px;
+  content: "";
+}
+.search-page-for-planing{
+    width: 920px;
+    padding: 8px 15px;
+    border-radius: 3px;
+    background: #fff;
+    border: 1px solid #333;
+    transition: 500ms;
+}
+.search-page-for-planing:after{
+    content: url("../img/search_icon.png");
+}
+.search-page-for-planing:hover{
+    box-shadow: 0px 0px 3px #333;
+ }
+.search-page-for-planing:focus{
+    box-shadow: 0px 0px 3px #333;
+}
+.search-page-for-planing-button{
+    width: 100px;
+    height: auto;
+    padding: 7px;
+    background: #FFF url("../img/search_icon.png") no-repeat center;
+    background-size: 20px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    transition: 500ms;
+}
+.search-page-for-planing-button:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 3px #333;
+}
