@@ -43,16 +43,17 @@ namespace TourCrow.Controllers
                 string getJsonData = place_details(result.place_id);
                 //Response.Write(getJsonData);
                 JavaScriptSerializer placeDetailsJS = new JavaScriptSerializer();
-                PlaceImageModel placeImageModel = placeDetailsJS.Deserialize<PlaceImageModel>(getJsonData);
+                PlaceDetailsModel placeImageModel = placeDetailsJS.Deserialize<PlaceDetailsModel>(getJsonData);
                 //Response.Write(placeImageModel.result.name+"</br>");
-                
+
                 //break;
             }
 
+            
+
         }
-
-
-
+        
+        //map API using latitude and longitude
         public static string downloadWebPage(double lng, double lat)
         {
             string urlAddress = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + lng + "," + lat + "&radius=500&types=tour&keyword=vegetarian&key=" + appKeys.GOOGLE_PLACE_API_KEY;
@@ -108,6 +109,37 @@ namespace TourCrow.Controllers
 
                 response.Close();
                 readStream.Close();
+                
+                return data;
+            }
+            return null;
+        }
+
+        public static string place_autocomplete(string input)
+        {
+            string urlAddress = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + input + "&types=geocode&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+
+                if (response.CharacterSet == null)
+                {
+                    readStream = new StreamReader(receiveStream);
+                }
+                else
+                {
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                }
+
+                string data = readStream.ReadToEnd();
+
+                response.Close();
+                readStream.Close();
                 return data;
             }
             return null;
@@ -120,6 +152,14 @@ namespace TourCrow.Controllers
 
             return urlAddress;
         }
+
+        public static string Place_id(string place_id)
+        {
+
+
+            return "asd";
+        }
+
 
     }
 
