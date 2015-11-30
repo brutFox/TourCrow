@@ -37,10 +37,10 @@
                         <div class="main-menu">
                             <ul class="visible-lg visible-md">
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li class="active"><a href="plan.html">Plan</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="registration.html">Registration</a></li>
+                                <li class="active">@Html.ActionLink("Plan", "Index", "Plan")</li>
+                                <li>@Html.ActionLink("Login", "Index", "SignIn")</li>
+                                <li>@Html.ActionLink("Register", "Index", "SignUp")</li>
+                                <li>@Html.ActionLink("About Us", "Index", "AboutUs")</li>
                             </ul>
                             <a href="#" class="toggle-menu visible-sm visible-xs">
                                 <i class="fa fa-bars"></i>
