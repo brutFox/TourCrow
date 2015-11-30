@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>Travel HTML5 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="templatemo">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/templatemo_misc.css">
+    <link rel="stylesheet" href="~/Content/templatemo_style.css">
+
+    <script src="~/Scripts/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+</head>
+<body>
+
+    <div class="site-header">
+        <div class="container">
+            <div class="main-header">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-10">
+                        <div class="logo">
+                            <a href="#">
+                                <img src="~/Content/images/logo.png" alt="travel html5 template" title="travel html5 template">
+                            </a>
+                        </div> <!-- /.logo -->
+                    </div> <!-- /.col-md-4 -->
+                    <div class="col-md-8 col-sm-6 col-xs-2">
+                        <div class="main-menu">
+                            <ul class="visible-lg visible-md">
+                                <li class="active"><a href="index.html">Home</a></li>
+                                <li>@Html.ActionLink("Plan", "Index", "Plan")</li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="registration.html">Registration</a></li>
+                            </ul>
+                            <a href="#" class="toggle-menu visible-sm visible-xs">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </div> <!-- /.main-menu -->
+                    </div> <!-- /.col-md-8 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.main-header -->
+            <div class="row">
+                <div class="col-md-12 visible-sm visible-xs">
+                    <div class="menu-responsive">
+                        <ul>
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="plan.html">Plan</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="registration.html">Registration</a></li>
+                        </ul>
+                    </div> <!-- /.menu-responsive -->
+                </div> <!-- /.col-md-12 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div>
+
+    <div class="flexslider">
+        <ul class="slides">
+
+            <li>
+                <img src="~/Content/images/main_image/slide/slide_3.jpg" alt="Special 1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-4">
+                            <div class="flex-caption visible-lg">
+                                <span class="price">Featured</span>
+                                <h3 class="title">Sundarbans, Khulna</h3>
+                                <p>
+                                    The Sundarbans is a natural region in the Bengal region comprising Eastern India and Bangladesh. It is the largest single block of tidal halophytic mangrove forest in the world.
+                                </p>
+                                <a href="#" class="slider-btn">Add to Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <img src="~/Content/images/main_image/slide/slide_4.jpg" alt="Special 1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-4">
+                            <div class="flex-caption visible-lg">
+                                <span class="price">Featured</span>
+                                <h3 class="title">Cox's Bazar</h3>
+                                <p>
+                                    Cox's Bazar is a town, a fishing port and district headquarters in Bangladesh. It is one of the world's longest uninterrupted natural sandy sea beaches, The beach in Cox's Bazar is an unbroken 125 km sandy sea beach with a gentle slope.
+                                </p>
+                                <a href="#" class="slider-btn">Add to Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <img src="~/Content/images/main_image/slide/slide_1.jpg" alt="Special 1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-4">
+                            <div class="flex-caption visible-lg">
+                                <span class="price">Featured</span>
+                                <h3 class="title">Safari park, Gazipur</h3>
+                                <p>Bangabandhu Sheikh Mujib Safari Park at Gazipur, located by ShuvroMegh</p>
+                                <a href="#" class="slider-btn">Add to Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <img src="~/Content/images/main_image/slide/slide_2.jpg" alt="Special 1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-4">
+                            <div class="flex-caption visible-lg">
+                                <span class="price">Featured</span>
+                                <h3 class="title">Rangamati, Chittagong</h3>
+                                <p>
+                                    Rangamati is the administrative headquarters of Rangamati Hill District in the Chittagong Hill Tracts of Bangladesh. It is also a Capital city of Chittagong Hill Tracts.
+                                </p>
+                                <a href="#" class="slider-btn">Add to Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="our-listing owl-carousel">
+
+                <div class="list-item">
+                    <div class="list-thumb">
+                        <div class="title">
+                            <h4>Cox's Bazar</h4>
+                        </div>
+                        <img src="~/Content/images/main_image/coxs_bazar.png" alt="destination 1">
+                    </div>
+                    <div class="list-content">
+                        <a href="#" class="price-btn">Add to plan</a>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-thumb">
+                        <div class="title">
+                            <h4>Rangamati</h4>
+                        </div>
+                        <img src="~/Content/images/main_image/rangamati.png" alt="destination 1">
+                    </div>
+                    <div class="list-content">
+                        <a href="#" class="price-btn">Add to plan</a>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-thumb">
+                        <div class="title">
+                            <h4>Sundarban</h4>
+                        </div>
+                        <img src="~/Content/images/main_image/sundarban.png" alt="destination 1">
+                    </div>
+                    <div class="list-content">
+                        <a href="#" class="price-btn">Add to plan</a>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-thumb">
+                        <div class="title">
+                            <h4>Sylhet</h4>
+                        </div>
+                        <img src="~/Content/images/main_image/sylhet.png" alt="destination 1">
+                    </div>
+                    <div class="list-content">
+                        <a href="#" class="price-btn">Add to plan</a>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-thumb">
+                        <div class="title">
+                            <h4>Mahasthangarh</h4>
+                        </div>
+                        <img src="~/Content/images/main_image/mohasthangor.png" alt="destination 1">
+                    </div>
+                    <div class="list-content">
+                        <a href="#" class="price-btn">Add to plan</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="middle-content container">
+        This is the main Content
+    </div>
+
+    <div class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <img src="~/Content/images/logo.png" alt="Logo">
+                        </a>
+                    </div>
+                </div> <!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <div class="copyright">
+                        <span>
+
+                            Copyright &copy; 2084 <a href="#">Tour Crow</a>
+
+                        </span>
+                    </div>
+                </div> <!-- /.col-md-4 -->
+                <div class="col-md-4 col-sm-4">
+                    <ul class="social-icons">
+                        <li><a href="#" class="fa fa-facebook"></a></li>
+                        <li><a href="#" class="fa fa-twitter"></a></li>
+                        <li><a href="#" class="fa fa-linkedin"></a></li>
+                        <li><a href="#" class="fa fa-flickr"></a></li>
+                    </ul>
+                </div> <!-- /.col-md-4 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div>
+
+    <script src="~/Scripts/vendor/jquery-1.11.0.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/plugins.js"></script>
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>

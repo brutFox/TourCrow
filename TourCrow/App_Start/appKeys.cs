@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace TourCrow.App_Start
+{
+    public class appKeys
+    {
+        public static string GOOGLE_PLACE_API_KEY = "AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s";
+    }
+}
