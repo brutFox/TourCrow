@@ -23,7 +23,7 @@ namespace TourCrow.Controllers
         public ActionResult Index()
         {
 
-            string getHttpResponse = downloadWebPage(48.859294, 2.347589);
+            string getHttpResponse = place_details("Mirpur");
             //Response.Write(getHttpResponse);
             parseData(getHttpResponse);
             return View();
@@ -32,19 +32,40 @@ namespace TourCrow.Controllers
 
         private void parseData(String json)
         {
+            //Response.Write(json);
             
             JavaScriptSerializer js = new JavaScriptSerializer();
             PlaceModel placeModel = js.Deserialize<PlaceModel>(json);
 
-            List<PlaceModel.ResultModel> resultModel = placeModel.results;
+            /*PlaceModel.ResultModel resultModel = placeModel.results;*/
 
-            foreach (PlaceModel.ResultModel result in resultModel)
+            foreach (PlaceModel.ResultModel result in placeModel.results)
             {
-                string getJsonData = place_details(result.place_id);
+                Response.Write(result.place_id + "</br>");
+                try
+                {
+                    Response.Write(result.photos[0].photo_reference);
+                }
+                catch (Exception e)
+                {
+                    Response.Write(e.Message);
+                }
+                
+
+                /*string getJsonData = place_details(result.name);
+
                 //Response.Write(getJsonData);
                 JavaScriptSerializer placeDetailsJS = new JavaScriptSerializer();
                 PlaceDetailsModel placeImageModel = placeDetailsJS.Deserialize<PlaceDetailsModel>(getJsonData);
-                //Response.Write(placeImageModel.result.name+"</br>");
+                if (placeImageModel.status.Equals("OK"))
+                {
+                    foreach (PlaceDetailsModel.ResultModel place in placeImageModel.results)
+                    {
+                        Response.Write(place.name + "</br>");
+                    }
+                }
+                else 
+                    Response.Write("Error </br>");*/
 
                 //break;
             }
@@ -84,10 +105,10 @@ namespace TourCrow.Controllers
             return null;
         }
 
-        public static string place_details(string place_id)
+        public static string place_details(string input)
         {
-            string urlAddress = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
-
+            //string urlAddress = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+            string urlAddress = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + input + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 

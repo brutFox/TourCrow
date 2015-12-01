@@ -12,10 +12,12 @@ namespace TourCrow.Models
 
         public class ResultModel
         {
-            public string id { get; set; }
             public string place_id { get; set; }
             public string reference { get; set; }
+            public string name { get; set; }
+            public string formatted_address { get; set; }
             public GeometryModel geometry;
+            public List<PhotoModel> photos;
 
         }
 
@@ -28,6 +30,11 @@ namespace TourCrow.Models
         {
             public float lat { get; set; }
             public float lng { get; set; }
+        }
+
+        public class PhotoModel
+        {
+            public string photo_reference { get; set; }
         }
        
     }
@@ -46,7 +53,7 @@ namespace TourCrow.Models
     public class PlaceDetailsModel
     {
         public string status { get; set; }
-        public ResultModel result { get; set; }
+        public List<ResultModel> results { get; set; }
 
         public class ResultModel
         {
@@ -65,6 +72,32 @@ namespace TourCrow.Models
             public string photo_reference { get; set; }
         }
 
+        //public class PlaceModel
+        //{
+        //    public string status { get; set; }
+        //    public List<ResultModel> results { get; set; }
+
+        //    public class ResultModel
+        //    {
+        //        public string id { get; set; }
+        //        public string place_id { get; set; }
+        //        public string reference { get; set; }
+        //        public GeometryModel geometry;
+
+        //    }
+
+        //    public class GeometryModel
+        //    {
+        //        public LocationModel location;
+        //    }
+
+        //    public class LocationModel
+        //    {
+        //        public float lat { get; set; }
+        //        public float lng { get; set; }
+        //    }
+
+        //}
 
 
     }
