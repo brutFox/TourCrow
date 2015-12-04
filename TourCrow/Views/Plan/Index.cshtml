@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@using TourCrow.Controllers
+@model TourCrow.Models.PlaceSearch
+@{
+    ViewBag.Title = "Plan";
 }
 
 
@@ -71,12 +73,16 @@
         <div class="container">
 
             <!-- Here place the main Content  -->
-
+            
             <div class="plan-main-div">
-                <div class="plan-head">
-                    <input class="search-page-for-planing " type="search" placeholder="Search ..." />
-                    <input type="button" class="search-page-for-planing-button"></button>
-                </div>
+                @using (Html.BeginForm("Search_Place", "Plan", FormMethod.Post))
+                {
+                    <div class="plan-head">
+                        @Html.TextBox("Searchbar", null, new {Class = "search-page-for-planing", placeholder = "Search...", name = "searchbar", id = "searchbar"})
+                        <input type="submit" class="search-page-for-planing-button" name="submit" value="search"/>
+
+                    </div>
+                }
                 <div class="plan-body">
                     <div class="plan-suggestion">
                         <div class="sugg-heading-button">
@@ -88,36 +94,36 @@
 
                             <div class="sugg-element">
                                 <div class="main-area-for-element">
-                                    <img src="img/saint.jpg" alt="" />
+                                    <img src="img/saint.jpg" alt=""/>
                                     <p>Rangamati</p>
                                     <p>* * * * *</p>
                                     <div class="action-for-sugg">
-                                        <input type="button" value="Add" class="add-to-list" /><br />
-                                        <input type="button" value="Remove" class="remove-from-list" />
+                                        <input type="button" value="Add" class="add-to-list"/><br/>
+                                        <input type="button" value="Remove" class="remove-from-list"/>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="sugg-element">
                                 <div class="main-area-for-element">
-                                    <img src="img/saint.jpg" alt="" />
+                                    <img src="img/saint.jpg" alt=""/>
                                     <p>Rangamati</p>
                                     <p>* * * * *</p>
                                     <div class="action-for-sugg">
-                                        <input type="button" value="Add" class="add-to-list" /><br />
-                                        <input type="button" value="Remove" class="remove-from-list" />
+                                        <input type="button" value="Add" class="add-to-list"/><br/>
+                                        <input type="button" value="Remove" class="remove-from-list"/>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="sugg-element">
                                 <div class="main-area-for-element">
-                                    <img src="img/saint.jpg" alt="" />
+                                    <img src="img/saint.jpg" alt=""/>
                                     <p>Rangamati</p>
                                     <p>* * * * *</p>
                                     <div class="action-for-sugg">
-                                        <input type="button" value="Add" class="add-to-list" /><br />
-                                        <input type="button" value="Remove" class="remove-from-list" />
+                                        <input type="button" value="Add" class="add-to-list"/><br/>
+                                        <input type="button" value="Remove" class="remove-from-list"/>
                                     </div>
                                 </div>
                             </div>
@@ -127,18 +133,26 @@
                     <div class="plan-day-list">
                         <div class="day-number-show">
                             <h2>Days</h2>
-                            <div class="no-day no-day-active"><p>1</p></div>
-                            <div class="no-day"><p>2</p></div>
-                            <div class="no-day"><p>3</p></div>
-                            <div class="no-day"><p>4</p></div>
+                            <div class="no-day no-day-active">
+                                <p>1</p>
+                            </div>
+                            <div class="no-day">
+                                <p>2</p>
+                            </div>
+                            <div class="no-day">
+                                <p>3</p>
+                            </div>
+                            <div class="no-day">
+                                <p>4</p>
+                            </div>
                         </div>
                         <div class="plan-main-element">
 
 
                             <div class="plan-single-element">
-                                <img src="img/saint.jpg" alt="" />
+                                <img src=@PlanController.place_image(ViewBag.place_photo) alt=""/>
                                 <div class="desc-elemetn">
-                                    <h3>Rangamati</h3>
+                                    <h3>@ViewBag.place_name</h3>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam doloremque eius, hic iusto maxime natus nobis, quae quibusdam repellat sit velit voluptatem? Incidunt iste itaque, maxime perferendis quisquam ut!</p>
                                     <div class="list-action-area">
                                         <select name="" class="move-to-days">
@@ -157,7 +171,7 @@
 
                         </div>
                     </div>
-                    <div class="plan-map">
+                    <div class="plan-map map-holder">
 
                     </div>
                 </div>
@@ -207,22 +221,45 @@
     <script src="~/Scripts/vendor/jquery.gmap3.min.js"></script>
 
     <!-- Google Map Init-->
-    <script type="text/javascript">
-            jQuery(function($){
-                $('.first-map, .map-holder').gmap3({
-                    marker:{
-                        address: '16.8496189,96.1288854'
-                    },
-                        map:{
-                        options:{
-                        zoom: 16,
-                        scrollwheel: false,
-                        streetViewControl : true
-                        }
-                    }
-                });
-            });
-    </script>
-    <!-- templatemo 409 travel -->
+<script type="text/javascript">
+    var lat = @ViewBag.place_lat;
+    var lng = @ViewBag.place_lng;
+    jQuery(function($){
+        $('.first-map, .map-holder').gmap3({
+            marker:{
+                address: '@ViewBag.place_lat, @ViewBag.place_lng'
+            },
+            map:{
+                options:{
+                    zoom: 16,
+                    scrollwheel: false,
+                    streetViewControl : true
+                }
+            }
+        });
+    });
+    
+
+    function initMap() {
+        var myLatLng = {lat: @ViewBag.place_lat, lng: @ViewBag.place_lng};
+
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            scrollwheel: false,
+            zoom: 4
+        });
+
+        // Create a marker and set its position.
+        var marker = new google.maps.Marker({
+            map: map,
+            position: myLatLng,
+            title: 'Hello World!'
+        });
+    }
+
+
+
+</script>
 </body>
 

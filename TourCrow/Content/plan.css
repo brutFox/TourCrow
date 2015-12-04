@@ -67,8 +67,8 @@ body {
 .plan-main-div .plan-body .plan-map {
   width: 220px;
   float: left;
-  background: blue;
-  height: 100px;
+  background: #aaa;
+  height: 1000px;
 }
 
 /* Left Side Sugg */
@@ -280,7 +280,7 @@ body {
     width: 100px;
     height: auto;
     padding: 7px;
-    background: #FFF url("../img/search_icon.png") no-repeat center;
+    background: #FFF url("~/Content/images/search_icon.png") no-repeat center;
     background-size: 20px;
     border: 1px solid #333;
     border-radius: 3px;

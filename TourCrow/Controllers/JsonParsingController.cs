@@ -23,7 +23,7 @@ namespace TourCrow.Controllers
         public ActionResult Index()
         {
 
-            string getHttpResponse = place_details("Mirpur");
+            string getHttpResponse = place_details("Ratargul");
             //Response.Write(getHttpResponse);
             parseData(getHttpResponse);
             return View();
