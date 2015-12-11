@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Models\PlaceModel.cs" />
     <Compile Include="Models\PlaceSearchModel.cs" />
+    <Compile Include="Models\PlaceSuggestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

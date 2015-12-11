@@ -72,6 +72,8 @@ namespace TourCrow.Models
             public string photo_reference { get; set; }
         }
 
+        
+
         //public class PlaceModel
         //{
         //    public string status { get; set; }
