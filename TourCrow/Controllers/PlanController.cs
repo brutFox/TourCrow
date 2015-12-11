@@ -124,18 +124,22 @@ namespace TourCrow.Controllers
             PlaceSuggestModel placeSuggModel = js.Deserialize<PlaceSuggestModel>(json);
 
             /*PlaceModel.ResultModel resultModel = placeModel.results;*/
-
+            List<PlaceSuggestModel.ResultModel> n = new List<PlaceSuggestModel.ResultModel>(); 
+                
             foreach (PlaceSuggestModel.ResultModel result in placeSuggModel.results)
             {
-                Response.Write(result.name + "</br>" + result.geometry.location.lat);
-                //ViewBag.place_id = result.place_id;
-                //ViewBag.place_name = result.name;
-                //ViewBag.place_lat = result.geometry.location.lat;
-                //ViewBag.place_lng = result.geometry.location.lng;
+                //Response.Write(result.name + "</br>");
+                //List<PlaceSuggestModel> n = new List<PlaceSuggestModel>(); 
+                if (result != null)
+                    n.Add(result);
+                
+                //ViewBag.na = n;
+                
+                
                 try
                 {
                     //Response.Write(result.photos[0].photo_reference);
-                    ViewBag.place_photo = result.photos[0].photo_reference;
+                    //ViewBag.place_photo = result.photos[0].photo_reference;
                     //func
 
                 }
@@ -146,6 +150,10 @@ namespace TourCrow.Controllers
                 }
 
             }
+
+
+            foreach (PlaceSuggestModel.ResultModel r in n)
+                Response.Write(r.name);
         }
 
 
