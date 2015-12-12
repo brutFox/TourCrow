@@ -1,5 +1,6 @@
 ﻿@using TourCrow.Controllers
-@model TourCrow.Models.PlaceSearch
+@using TourCrow.Models
+
 @{
     ViewBag.Title = "Plan";
 }
@@ -92,7 +93,28 @@
                         <div class="clear"></div>
                         <div class="sugg-main-area ">
 
-                            <div class="sugg-element">
+
+                            @{
+                                foreach (asdsad)
+                                {
+                                            <div class="sugg-element">
+                                        <div class="main-area-for-element">
+                                            <img src="img/saint.jpg" alt=""/>
+                                            <p>Rangamati</p>
+                                            <p>* * * * *</p>
+                                            <div class="action-for-sugg">
+                                                <input type="button" value="Add" class="add-to-list"/><br/>
+                                                <input type="button" value="Remove" class="remove-from-list"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                                
+                                
+                            }
+                            
+                            @*<div class="sugg-element">
                                 <div class="main-area-for-element">
                                     <img src="img/saint.jpg" alt=""/>
                                     <p>Rangamati</p>
@@ -126,7 +148,7 @@
                                         <input type="button" value="Remove" class="remove-from-list"/>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
 
                         </div>
                     </div>

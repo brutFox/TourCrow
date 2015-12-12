@@ -44,7 +44,7 @@ namespace TourCrow.Controllers
         }
 
 
-        private void parseData(String json)
+        public void parseData(String json)
         {
             //Response.Write(json);
 
@@ -55,16 +55,22 @@ namespace TourCrow.Controllers
 
             foreach (PlaceModel.ResultModel result in placeModel.results)
             {
-                //esponse.Write(result.place_id + "</br>" + result.geometry.location.lat);
+                //Response.Write(result.place_id + "</br>" + result.geometry.location.lat);
+                ViewBag.pm = placeModel.results;
                 ViewBag.place_id = result.place_id;
                 ViewBag.place_name = result.name;
                 ViewBag.place_lat = result.geometry.location.lat;
                 ViewBag.place_lng = result.geometry.location.lng;
+
+                string jsonData = place_suggest(result.geometry.location.lat, result.geometry.location.lng);
+                parseDataToShowSugg(jsonData);
+
+
                 try
                 {
                     //Response.Write(result.photos[0].photo_reference);
                     ViewBag.place_photo = result.photos[0].photo_reference;
-                    
+                    //func
 
                 }
                 catch (Exception e)
@@ -75,13 +81,87 @@ namespace TourCrow.Controllers
 
             }
         }
-        //this url needed
-        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=23.8105444,90.3272611&radius=5000&types=hospital&key=AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s
+
+                //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=23.8105444,90.3272611&radius=5000&types=hospital&key=AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s
+
 
         public static string place_details(string input)
         {
             //string urlAddress = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + place_id + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
             string urlAddress = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + input + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+
+                if (response.CharacterSet == null)
+                {
+                    readStream = new StreamReader(receiveStream);
+                }
+                else
+                {
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                }
+
+                string data = readStream.ReadToEnd();
+
+                response.Close();
+                readStream.Close();
+
+                return data;
+            }
+            return null;
+        }
+
+        private void parseDataToShowSugg(String json)
+        {
+            //Response.Write(json);
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            PlaceSuggestModel placeSuggModel = js.Deserialize<PlaceSuggestModel>(json);
+
+            /*PlaceModel.ResultModel resultModel = placeModel.results;*/
+            List<PlaceSuggestModel.ResultModel> n = new List<PlaceSuggestModel.ResultModel>(); 
+                
+            foreach (PlaceSuggestModel.ResultModel result in placeSuggModel.results)
+            {
+                //Response.Write(result.name + "</br>");
+                //List<PlaceSuggestModel> n = new List<PlaceSuggestModel>(); 
+                if (result != null)
+                    n.Add(result);
+                
+                //ViewBag.na = n;
+                
+                
+                try
+                {
+                    //Response.Write(result.photos[0].photo_reference);
+                    //ViewBag.place_photo = result.photos[0].photo_reference;
+                    //func
+
+                }
+                catch (Exception e)
+                {
+                    //Response.Write(e.Message);
+
+                }
+
+            }
+
+
+            foreach (PlaceSuggestModel.ResultModel r in n)
+                Response.Write(r.name);
+        }
+
+
+
+        public static string place_suggest(double lat, double lng)
+        {
+            string urlAddress = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=5000&types=hospital&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+           
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
