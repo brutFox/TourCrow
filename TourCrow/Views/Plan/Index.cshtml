@@ -20,10 +20,54 @@
     <link rel="stylesheet" href="~/Content/templatemo_misc.css">
     <link rel="stylesheet" href="~/Content/templatemo_style.css">
     <link href="~/Content/plan.css" rel="stylesheet" />
+    <link href="~/Content/SignInandSignUp/style.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
 
     <script src="~/Scripts/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   
 </head>
 <body>
+
+   <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background: transparent; border: 0px; box-shadow: unset; margin-top: 60px;">
+                    <div class="modal-body" style="padding:0px; width: 400px; margin: 0px auto;background:#fff">
+                        <div class="loginpanel">
+                            <h3 style="width:100%;text-align:center;margin-bottom:25px;">Login Page</h3>
+                            <div class="txt">
+                                <input id="user" type="text" placeholder="Username" />
+                                <label for="user" class="entypo-user"></label>
+                            </div>
+                            <div class="txt">
+                                <input id="pwd" type="password" placeholder="Password" />
+                                <label for="pwd" class="entypo-lock"></label>
+                            </div>
+                            <div class="buttons">
+                                <input type="button" value="Login" />
+                                <span>
+                                    <a href="" class="entypo-user-add register">Register</a>
+                                </span>
+                            </div>
+
+                            <div class="hr">
+                                <div></div>
+                                <div>OR</div>
+                                <div></div>
+                            </div>
+
+                            <div class="social">
+                                <a href="#" class="facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
 
     <div class="site-header">
         <div class="container">
@@ -175,8 +219,12 @@
                             <div class="plan-main-element" id="plan_list">
                                 
                             </div>
-                        
-                            <input type="submit" name="submit" value="submit" />
+
+                            <input type="submit" name="submit" onclick='return false;' value="submit" />
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
+                                Submit
+                            </button>
                         }
                     </div>
                     <div class="plan-map map-holder">
@@ -216,17 +264,26 @@
     </div> <!-- /.container -->
 </div>
 
+    
 
 
-<script src="~/Scripts/vendor/jquery-1.11.0.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="js/bootstrap.js"></script>
+   
     <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
     <script src="~/Scripts/SearchPage.js"></script>
     <!-- Google Map -->
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script src="~/Scripts/vendor/jquery.gmap3.min.js"></script>
+
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
+    </script>
 
     <!-- Google Map Init-->
 <script type="text/javascript">
