@@ -14,6 +14,7 @@ namespace TourCrow.Models
         {
             public string place_id { get; set; }
             public string name { get; set; }
+            public double rating { get; set; }
             //public string formatted_address { get; set; }
             public GeometryModel geometry;
             public List<PhotoModel> photos;

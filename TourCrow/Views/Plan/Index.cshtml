@@ -80,7 +80,7 @@
                 {
                     <div class="plan-head">
                         @Html.TextBox("Searchbar", null, new {Class = "search-page-for-planing", placeholder = "Search...", name = "searchbar", id = "searchbar"})
-                        <input type="submit" class="search-page-for-planing-button" name="submit" value="search"/>
+                        <input type="button" class="search-page-for-planing-button" id="submit" name="submit" value="search"/>
 
                     </div>
                 }
@@ -91,14 +91,14 @@
                             <div class="recommend place-recom-active"><span>Recommend</span></div>
                         </div>
                         <div class="clear"></div>
-                        <div class="sugg-main-area ">
+                        <div class="sugg-main-area" id="suggestPlace">
 
 
                             @{
-                                foreach (asdsad)
+                                @*foreach (asdsad)
                                 {
                                             <div class="sugg-element">
-                                        <div class="main-area-for-element">
+                                        <div class="main-area-for-element"> 
                                             <img src="img/saint.jpg" alt=""/>
                                             <p>Rangamati</p>
                                             <p>* * * * *</p>
@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
 
-                                }
+                                }*@
                                 
                                 
                             }
@@ -236,8 +236,8 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="js/bootstrap.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
+<script src="js/main.js"></script>
+    <script src="~/Scripts/SearchPage.js"></script>
     <!-- Google Map -->
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script src="~/Scripts/vendor/jquery.gmap3.min.js"></script>

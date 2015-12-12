@@ -77,7 +77,7 @@ body {
   float: left;
   height: 35px;
   text-align: center;
-  padding-top: 15px;
+  padding-top: 8px;
   border-radius: 4px;
   font-weight: 700;
   cursor: pointer;
@@ -260,7 +260,7 @@ body {
   content: "";
 }
 .search-page-for-planing{
-    width: 920px;
+    width: 900px;
     padding: 8px 15px;
     border-radius: 3px;
     background: #fff;
@@ -268,7 +268,7 @@ body {
     transition: 500ms;
 }
 .search-page-for-planing:after{
-    content: url("../img/search_icon.png");
+    content: url("images/search_icon.png");
 }
 .search-page-for-planing:hover{
     box-shadow: 0px 0px 3px #333;
