@@ -55,7 +55,7 @@ namespace TourCrow.Controllers
 
             foreach (PlaceModel.ResultModel result in placeModel.results)
             {
-                Response.Write(result.place_id + "</br>" + result.geometry.location.lat);
+                //esponse.Write(result.place_id + "</br>" + result.geometry.location.lat);
                 ViewBag.place_id = result.place_id;
                 ViewBag.place_name = result.name;
                 ViewBag.place_lat = result.geometry.location.lat;
@@ -75,7 +75,8 @@ namespace TourCrow.Controllers
 
             }
         }
-
+        //this url needed
+        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=23.8105444,90.3272611&radius=5000&types=hospital&key=AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s
 
         public static string place_details(string input)
         {
