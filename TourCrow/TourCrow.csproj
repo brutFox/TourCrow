@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -135,10 +137,40 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\COMMENT.cs">
+      <DependentUpon>TourCrowDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PACKAGE.cs">
+      <DependentUpon>TourCrowDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PlaceModel.cs" />
     <Compile Include="Models\PlaceSearchModel.cs" />
     <Compile Include="Models\PlaceSuggestModel.cs" />
+    <Compile Include="Models\RATING.cs">
+      <DependentUpon>TourCrowDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TourCrowDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourCrowDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TourCrowDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourCrowDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TourCrowDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourCrowDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USER.cs">
+      <DependentUpon>TourCrowDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\USER_PACKAGE.cs">
+      <DependentUpon>TourCrowDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +296,23 @@
     <Content Include="Content\fonts\roboto\Roboto-Thin.ttf" />
     <Content Include="Content\fonts\roboto\Roboto-Thin.woff" />
     <Content Include="Content\fonts\roboto\Roboto-Thin.woff2" />
+    <EntityDeploy Include="Models\TourCrowDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TourCrowDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TourCrowDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourCrowDB.edmx</DependentUpon>
+      <LastGenOutput>TourCrowDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TourCrowDB.edmx.diagram">
+      <DependentUpon>TourCrowDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TourCrowDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourCrowDB.edmx</DependentUpon>
+      <LastGenOutput>TourCrowDB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\html5shiv.js" />
@@ -321,6 +370,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
