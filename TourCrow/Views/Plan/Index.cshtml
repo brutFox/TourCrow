@@ -168,30 +168,16 @@
                                 <p>4</p>
                             </div>
                         </div>
-                        <div class="plan-main-element">
 
-
-                            <div class="plan-single-element">
-                                <img src=@PlanController.place_image(ViewBag.place_photo) alt=""/>
-                                <div class="desc-elemetn">
-                                    <h3>@ViewBag.place_name</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam doloremque eius, hic iusto maxime natus nobis, quae quibusdam repellat sit velit voluptatem? Incidunt iste itaque, maxime perferendis quisquam ut!</p>
-                                    <div class="list-action-area">
-                                        <select name="" class="move-to-days">
-                                            <option value="0">Move to day</option>
-                                            <option value="1">Day 1</option>
-                                            <option value="2">Day 2</option>
-                                            <option value="3">Day 3</option>
-                                        </select>
-                                        <div class="remove-place"><span>Remove</span></div>
-                                        <div class="more-info"><span>More Info</span></div>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
+                        @*mid div*@
+                        @using (Html.BeginForm("place_submit", "Plan", FormMethod.Post))
+                        {
+                            <div class="plan-main-element" id="plan_list">
+                                
                             </div>
-
-
-                        </div>
+                        
+                            <input type="submit" name="submit" value="submit" />
+                        }
                     </div>
                     <div class="plan-map map-holder">
 

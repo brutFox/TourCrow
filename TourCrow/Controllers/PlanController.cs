@@ -200,7 +200,7 @@ namespace TourCrow.Controllers
 
         public static string place_suggest(double lat, double lng)
         {
-            string urlAddress = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=50000&types=zoo&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+            string urlAddress = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=50000&types=hospital&key=" + appKeys.GOOGLE_PLACE_API_KEY;
            
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -235,6 +235,19 @@ namespace TourCrow.Controllers
 
 
             return urlAddress;
+        }
+        [HttpPost]
+        public ActionResult place_submit()
+        {
+            string[] items = Request.Form.GetValues("pid");
+
+            foreach (string values in items)
+            {
+                Response.Write(values);
+            }
+
+
+            return View("Index");
         }
     }
 }
