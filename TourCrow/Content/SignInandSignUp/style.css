@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Ubuntu|Courgette);
 @font-face {
     font-family: 'entypo';
@@ -891,16 +891,10 @@ body {
 }
 div.loginpanel {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     padding: 20px;
     margin: 0 auto;
     position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
     background-color: rgba(221, 221, 221, 0.6);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
