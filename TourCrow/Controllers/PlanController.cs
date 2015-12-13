@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -9,6 +10,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 using Newtonsoft.Json;
 using TourCrow.App_Start;
 using TourCrow.Models;
@@ -19,6 +21,8 @@ namespace TourCrow.Controllers
     {
         //
         // GET: /Plan/
+
+        private TourCrowEntities1 storeDB = new TourCrowEntities1();
 
         public ActionResult Index()
         {
@@ -233,17 +237,24 @@ namespace TourCrow.Controllers
         {
             string urlAddress = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + image_key + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
 
-
+            
             return urlAddress;
         }
-        [HttpPost]
+        [HttpGet]
         public ActionResult place_submit()
         {
-            string[] items = Request.Form.GetValues("pid");
-
+            //string[] items = Request.Form.GetValues("pid");
+            
+            string[] items = Request.QueryString.GetValues("pid");
             foreach (string values in items)
             {
                 Response.Write(values);
+                var pack = new USER_PACKAGE()
+                {
+                    PlaceID = values
+                    
+
+                };
             }
 
 
