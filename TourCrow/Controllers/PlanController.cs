@@ -11,9 +11,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.UI;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using TourCrow.App_Start;
 using TourCrow.Models;
+
 
 namespace TourCrow.Controllers
 {
@@ -22,7 +24,9 @@ namespace TourCrow.Controllers
         //
         // GET: /Plan/
 
-       
+        private TourCrowDBEntities tcdb = new TourCrowDBEntities();
+
+
         public ActionResult Index()
         {
             //string getHttpResponse = place_details("Ratargul");
@@ -246,15 +250,19 @@ namespace TourCrow.Controllers
 
             string[] items = Request.QueryString.GetValues("pid");
             
-
+            
             foreach (string values in items)
             {
                 Response.Write(values);
+                using (var db = new TourCrowDBEntities())
+                {
+                    //var l2 = db.USER_PACKAGE.Where(s => s.PlaceID = values.ToString());
+                } 
                 
             }
 
 
-            return View("Index");
+            return View("");
         }
     }
 }
