@@ -13,10 +13,10 @@ namespace TourCrow.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TourCrowEntities1 : DbContext
+    public partial class TourCrowDBEntities : DbContext
     {
-        public TourCrowEntities1()
-            : base("name=TourCrowEntities1")
+        public TourCrowDBEntities()
+            : base("name=TourCrowDBEntities")
         {
         }
     

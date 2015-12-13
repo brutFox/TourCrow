@@ -17,7 +17,5 @@ namespace TourCrow.Models
         public int PackageID { get; set; }
         public string PlaceID { get; set; }
         public string Day { get; set; }
-    
-        public virtual PACKAGE PACKAGE { get; set; }
     }
 }

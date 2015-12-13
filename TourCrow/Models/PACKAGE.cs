@@ -14,16 +14,8 @@ namespace TourCrow.Models
     
     public partial class PACKAGE
     {
-        public PACKAGE()
-        {
-            this.USER_PACKAGE = new HashSet<USER_PACKAGE>();
-        }
-    
         public int PackageID { get; set; }
         public string Title { get; set; }
         public int UserID { get; set; }
-    
-        public virtual USER USER { get; set; }
-        public virtual ICollection<USER_PACKAGE> USER_PACKAGE { get; set; }
     }
 }

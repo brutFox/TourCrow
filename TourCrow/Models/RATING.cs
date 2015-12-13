@@ -18,8 +18,5 @@ namespace TourCrow.Models
         public int UserID { get; set; }
         public int PlaceID { get; set; }
         public Nullable<double> Rating1 { get; set; }
-        public int USERUserID { get; set; }
-    
-        public virtual USER USER { get; set; }
     }
 }

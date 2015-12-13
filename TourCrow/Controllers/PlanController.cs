@@ -22,8 +22,7 @@ namespace TourCrow.Controllers
         //
         // GET: /Plan/
 
-        private TourCrowEntities1 storeDB = new TourCrowEntities1();
-
+       
         public ActionResult Index()
         {
             //string getHttpResponse = place_details("Ratargul");
@@ -237,24 +236,21 @@ namespace TourCrow.Controllers
         {
             string urlAddress = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + image_key + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
 
-            
+
             return urlAddress;
         }
         [HttpGet]
         public ActionResult place_submit()
         {
             //string[] items = Request.Form.GetValues("pid");
-            
+
             string[] items = Request.QueryString.GetValues("pid");
+            
+
             foreach (string values in items)
             {
                 Response.Write(values);
-                var pack = new USER_PACKAGE()
-                {
-                    PlaceID = values
-                    
-
-                };
+                
             }
 
 

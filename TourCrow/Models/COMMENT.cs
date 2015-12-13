@@ -18,7 +18,5 @@ namespace TourCrow.Models
         public int UserID { get; set; }
         public string PlaceID { get; set; }
         public string Comment1 { get; set; }
-    
-        public virtual USER USER { get; set; }
     }
 }

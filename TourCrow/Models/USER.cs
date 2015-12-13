@@ -14,21 +14,9 @@ namespace TourCrow.Models
     
     public partial class USER
     {
-        public USER()
-        {
-            this.COMMENTs = new HashSet<COMMENT>();
-            this.RATINGs = new HashSet<RATING>();
-            this.PACKAGEs = new HashSet<PACKAGE>();
-        }
-    
         public int UserID { get; set; }
         public string UserEmail { get; set; }
         public string UserFBID { get; set; }
         public string UserName { get; set; }
-        public string UserPassword { get; set; }
-    
-        public virtual ICollection<COMMENT> COMMENTs { get; set; }
-        public virtual ICollection<RATING> RATINGs { get; set; }
-        public virtual ICollection<PACKAGE> PACKAGEs { get; set; }
     }
 }
