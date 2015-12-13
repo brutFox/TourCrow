@@ -32,6 +32,10 @@ namespace TourCrow.Controllers
             //string getHttpResponse = place_details("Ratargul");
             ////Response.Write(getHttpResponse);
             //parseData(getHttpResponse);
+            var context = new TourCrowDBEntities();
+            var qr = from c in context.USERs select c.UserName;
+            var us = qr.ToList();
+            Response.Write(us[0]);
 
             return View();
         }
@@ -249,16 +253,16 @@ namespace TourCrow.Controllers
             //string[] items = Request.Form.GetValues("pid");
 
             string[] items = Request.QueryString.GetValues("pid");
-            
-            
+
+            //var context = new TourCrowDBEntities();
+            //var qr = from c in context.USERs select c;
+            //var us = qr.ToList();
+            //Response.Write(us);
             foreach (string values in items)
             {
-                Response.Write(values);
-                using (var db = new TourCrowDBEntities())
-                {
-                    //var l2 = db.USER_PACKAGE.Where(s => s.PlaceID = values.ToString());
-                } 
+                //Response.Write(values);
                 
+
             }
 
 
