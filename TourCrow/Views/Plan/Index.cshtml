@@ -27,11 +27,72 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-   
+
+    <script src="~/Scripts/fbsdk.js"></script>
+    <script>
+        // Load the SDK asynchronously
+        (function(thisdocument, scriptelement, id) {
+            var js, fjs = thisdocument.getElementsByTagName(scriptelement)[0];
+            if (thisdocument.getElementById(id)) return;
+
+            js = thisdocument.createElement(scriptelement); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '415519201971152', //Your APP ID
+                cookie     : true,  // enable cookies to allow the server to access
+                // the session
+                xfbml      : true,  // parse social plugins on this page
+                version    : 'v2.5' // use version 2.4
+            });
+
+            // These three cases are handled in the callback function.
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+
+        };
+
+        // This is called with the results from from FB.getLoginStatus().
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                _i();
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+               
+            }
+        }
+
+        function _login() {
+            FB.login(function(response) {
+                // handle the response
+                if(response.status==='connected') {
+                    _i();
+                }
+                else if (response.status === 'not_authorized') {
+                    // The person is logged into Facebook, but not your app.
+                    console.log("Error" + response.error);
+                }
+            }, {scope: 'public_profile,email'});
+        }
+
+        function _i(){
+            FB.api('/me', function(response) {
+                console.log(JSON.stringify(response));
+            });
+        }
+
+    </script>
+
+
 </head>
 <body>
 
-   <!-- Modal -->
+   <!-- Login Page -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="background: transparent; border: 0px; box-shadow: unset; margin-top: 60px;">
@@ -60,7 +121,7 @@
                             </div>
 
                             <div class="social">
-                                <a href="#" class="facebook"></a>
+                                <a onclick="_login();" class="facebook"></a>
                             </div>
                         </div>
                     </div>
