@@ -24,7 +24,7 @@ namespace TourCrow.Controllers
         //
         // GET: /Plan/
 
-        private TourCrowDBEntities tcdb = new TourCrowDBEntities();
+        //private TourCrowDBEntities tcdb = new TourCrowDBEntities();
 
 
         public ActionResult Index()
@@ -32,10 +32,7 @@ namespace TourCrow.Controllers
             //string getHttpResponse = place_details("Ratargul");
             ////Response.Write(getHttpResponse);
             //parseData(getHttpResponse);
-            var context = new TourCrowDBEntities();
-            var qr = from c in context.USERs select c.UserName;
-            var us = qr.ToList();
-            Response.Write(us[0]);
+            
 
             return View();
         }
