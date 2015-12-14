@@ -373,6 +373,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\JsonParsing\Index.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

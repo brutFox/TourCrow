@@ -32,8 +32,9 @@ namespace TourCrow.Controllers
             //string getHttpResponse = place_details("Ratargul");
             ////Response.Write(getHttpResponse);
             //parseData(getHttpResponse);
-            
 
+            ViewBag.Title = "Plan";
+            ViewBag.activePage = "Plan";
             return View();
         }
 
