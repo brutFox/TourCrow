@@ -33,6 +33,12 @@ namespace TourCrow.Controllers
             ////Response.Write(getHttpResponse);
             //parseData(getHttpResponse);
 
+            var context = new TourCrowDBEntities();
+            var query = from c in context.USERs select c.UserEmail;
+            var user = query.ToList();
+            Response.Write(user[0]);
+
+
             return View();
         }
 
@@ -143,6 +149,7 @@ namespace TourCrow.Controllers
                 if(response.CharacterSet == null)
                 {
                     readStream = new StreamReader(receiveStream);
+                    
                 }
                 else
                 {
@@ -254,10 +261,8 @@ namespace TourCrow.Controllers
             foreach (string values in items)
             {
                 Response.Write(values);
-                using (var db = new TourCrowDBEntities())
-                {
-                    //var l2 = db.USER_PACKAGE.Where(s => s.PlaceID = values.ToString());
-                } 
+
+                
                 
             }
 
