@@ -24,6 +24,8 @@ namespace TourCrow.Controllers
         {
             string username = Convert.ToString(Request["userName"]);
             string fbId = Convert.ToString(Request["fbId"]);
+            string email = Convert.ToString(Request["fbEmail"]);
+            //Response.Write(email+"</br>");
             string[] items = Request.QueryString.GetValues("pid");
             //Response.Write(username + "</br>" + fbId + "</br>"+items[0]);
             

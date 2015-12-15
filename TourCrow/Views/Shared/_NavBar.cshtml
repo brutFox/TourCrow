@@ -67,7 +67,7 @@
                 cookie: true, // enable cookies to allow the server to access
                 // the session
                 xfbml: true, // parse social plugins on this page
-                version: 'v2.5' // use version 2.4
+                version: 'v2.4' // use version 2.4
             });
 
             // These three cases are handled in the callback function.
@@ -133,14 +133,15 @@
             FB.api('/me', function(response) {
                 //console.log(JSON.stringify(response));
                 //alert(response.name);
-                setValues(response.name, response.id);
+                setValues(response.name, response.id, response.email);
                 submitFormWithData();
             });
         }
 
-        function setValues(userName,fbId) {
+        function setValues(userName,fbId,fbEmail) {
             document.getElementById("userName").value = userName;
             document.getElementById("fbId").value = fbId;
+            //document.getElementById("fbEmail").value = fbEmail;
         }
 
 

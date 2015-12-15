@@ -53,36 +53,6 @@
                             </div>
                         </div>
 
-                        @*mid div*@
-                                                @*@using (Html.BeginForm("place_submit", "Plan", FormMethod.Get))
-        {
-            <div class="plan-main-element" id="plan_list">
-
-            </div>
-
-            <input type="submit" name="submit" onclick='return false;' value="submit" />
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-                Submit
-            </button>
-
-
-        <form action="login_db" method="post" id="testForm">
-            <div class="plan-main-element" id="plan_list">
-
-            </div>
-
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-                Submit
-            </button>
-
-        </form>
-        }*@
-
-
-
                         @using (Html.BeginForm("CheckSignIn", "Profile", FormMethod.Get, new { id = "testForm" }))
                         {
 
@@ -92,7 +62,7 @@
 
                             <input type="hidden" id="userName" name="userName"/>
                             <input type="hidden" name="fbId" id="fbId"/>
-
+    
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-lg" onclick="_login();">
                                 Submit
@@ -110,8 +80,6 @@
 
         </div>
     </div>
-
-    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
