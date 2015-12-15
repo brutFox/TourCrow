@@ -14,6 +14,7 @@ namespace TourCrow.Models
     
     public partial class USER_PACKAGE
     {
+        public int UPID { get; set; }
         public int PackageID { get; set; }
         public string PlaceID { get; set; }
         public string Day { get; set; }

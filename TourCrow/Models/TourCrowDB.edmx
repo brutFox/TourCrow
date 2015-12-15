@@ -31,16 +31,6 @@
           <Property Name="PlaceID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="float" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="UserFBID" />
@@ -51,14 +41,12 @@
           <Property Name="UserName" Type="varchar(max)" Nullable="false" />
           <Property Name="UserPassword" Type="varchar(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\RAFAT\SKYDRIVE\TOURCROW\TOURCROW\APP_DATA\TOURCROW.MDF.dbo.USER_PACKAGE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="USER_PACKAGE">
           <Key>
-            <PropertyRef Name="PackageID" />
-            <PropertyRef Name="PlaceID" />
+            <PropertyRef Name="UPID" />
           </Key>
-          <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
           <Property Name="PlaceID" Type="varchar(max)" Nullable="false" />
           <Property Name="Day" Type="varchar(max)" />
         </EntityType>
@@ -114,15 +102,8 @@ warning 6002: The table/view 'C:\USERS\RAFAT\SKYDRIVE\TOURCROW\TOURCROW\APP_DATA
           <EntitySet Name="COMMENT" EntityType="Self.COMMENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACKAGE" EntityType="Self.PACKAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RATING" EntityType="Self.RATING" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="USER_PACKAGE" EntityType="Self.USER_PACKAGE" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [USER_PACKAGE].[PackageID] AS [PackageID], 
-    [USER_PACKAGE].[PlaceID] AS [PlaceID], 
-    [USER_PACKAGE].[Day] AS [Day]
-    FROM [dbo].[USER_PACKAGE] AS [USER_PACKAGE]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="USER_PACKAGE" EntityType="Self.USER_PACKAGE" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_COMMENT_USER" Association="Self.FK_COMMENT_USER">
             <End Role="USER" EntitySet="USER" />
             <End Role="COMMENT" EntitySet="COMMENT" />
@@ -175,16 +156,6 @@ warning 6002: The table/view 'C:\USERS\RAFAT\SKYDRIVE\TOURCROW\TOURCROW\APP_DATA
           <Property Name="Rating1" Type="Double" />
           <NavigationProperty Name="USER" Relationship="Self.FK_RATING_USER" FromRole="RATING" ToRole="USER" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="USER">
           <Key>
             <PropertyRef Name="UserFBID" />
@@ -200,10 +171,10 @@ warning 6002: The table/view 'C:\USERS\RAFAT\SKYDRIVE\TOURCROW\TOURCROW\APP_DATA
         </EntityType>
         <EntityType Name="USER_PACKAGE">
           <Key>
-            <PropertyRef Name="PackageID" />
-            <PropertyRef Name="PlaceID" />
+            <PropertyRef Name="UPID" />
           </Key>
-          <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
           <Property Name="PlaceID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Day" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PACKAGE" Relationship="Self.FK_USER_PACKAGE_PACKAGE" FromRole="USER_PACKAGE" ToRole="PACKAGE" />
@@ -260,7 +231,6 @@ warning 6002: The table/view 'C:\USERS\RAFAT\SKYDRIVE\TOURCROW\TOURCROW\APP_DATA
           <EntitySet Name="COMMENTs" EntityType="Self.COMMENT" />
           <EntitySet Name="PACKAGEs" EntityType="Self.PACKAGE" />
           <EntitySet Name="RATINGs" EntityType="Self.RATING" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="USERs" EntityType="Self.USER" />
           <EntitySet Name="USER_PACKAGE" EntityType="Self.USER_PACKAGE" />
           <AssociationSet Name="FK_COMMENT_USER" Association="Self.FK_COMMENT_USER">
@@ -315,17 +285,6 @@ warning 6002: The table/view 'C:\USERS\RAFAT\SKYDRIVE\TOURCROW\TOURCROW\APP_DATA
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="TourCrowModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="USERs">
             <EntityTypeMapping TypeName="TourCrowModel.USER">
               <MappingFragment StoreEntitySet="USER">
@@ -340,6 +299,7 @@ warning 6002: The table/view 'C:\USERS\RAFAT\SKYDRIVE\TOURCROW\TOURCROW\APP_DATA
           <EntitySetMapping Name="USER_PACKAGE">
             <EntityTypeMapping TypeName="TourCrowModel.USER_PACKAGE">
               <MappingFragment StoreEntitySet="USER_PACKAGE">
+                <ScalarProperty Name="UPID" ColumnName="UPID" />
                 <ScalarProperty Name="PackageID" ColumnName="PackageID" />
                 <ScalarProperty Name="PlaceID" ColumnName="PlaceID" />
                 <ScalarProperty Name="Day" ColumnName="Day" />

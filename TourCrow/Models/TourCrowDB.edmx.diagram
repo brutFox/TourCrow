@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e494eb29f4f2438f912d781dfc678cad" Name="Diagram1" ZoomLevel="90">
-        <EntityTypeShape EntityType="TourCrowModel.COMMENT" Width="1.5" PointX="5.625" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourCrowModel.PACKAGE" Width="1.5" PointX="5.625" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourCrowModel.RATING" Width="1.5" PointX="5.625" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourCrowModel.sysdiagram" Width="1.5" PointX="0.625" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourCrowModel.USER" Width="1.5" PointX="3.375" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TourCrowModel.USER_PACKAGE" Width="1.5" PointX="7.875" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="897fa823c71e412b99147189fe9ba999" Name="Diagram1">
+        <EntityTypeShape EntityType="TourCrowModel.COMMENT" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourCrowModel.PACKAGE" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourCrowModel.RATING" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourCrowModel.USER" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourCrowModel.USER_PACKAGE" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="TourCrowModel.FK_COMMENT_USER" ManuallyRouted="false" />
         <AssociationConnector Association="TourCrowModel.FK_PACKAGE_USER" ManuallyRouted="false" />
         <AssociationConnector Association="TourCrowModel.FK_USER_PACKAGE_PACKAGE" ManuallyRouted="false" />

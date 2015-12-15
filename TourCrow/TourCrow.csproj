@@ -154,9 +154,6 @@
     <Compile Include="Models\RATING.cs">
       <DependentUpon>TourCrowDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>TourCrowDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TourCrowDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -28,7 +28,6 @@ namespace TourCrow.Models
         public virtual DbSet<COMMENT> COMMENTs { get; set; }
         public virtual DbSet<PACKAGE> PACKAGEs { get; set; }
         public virtual DbSet<RATING> RATINGs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
         public virtual DbSet<USER_PACKAGE> USER_PACKAGE { get; set; }
     }
