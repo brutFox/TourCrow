@@ -24,7 +24,7 @@ namespace TourCrow.Controllers
         //
         // GET: /Plan/
 
-        private TourCrowDBEntities tcdb = new TourCrowDBEntities();
+        //private TourCrowDBEntities tcdb = new TourCrowDBEntities();
 
 
         public ActionResult Index()
@@ -33,12 +33,8 @@ namespace TourCrow.Controllers
             ////Response.Write(getHttpResponse);
             //parseData(getHttpResponse);
 
-            var context = new TourCrowDBEntities();
-            var query = from c in context.USERs select c.UserEmail;
-            var user = query.ToList();
-            Response.Write(user[0]);
-
-
+            ViewBag.Title = "Plan";
+            ViewBag.activePage = "Plan";
             return View();
         }
 
@@ -52,6 +48,7 @@ namespace TourCrow.Controllers
             parseData(getHttpResponse);
 
             ViewBag.place_inpur = input;
+            Response.Write(ViewBag.nm);
 
             return View("Index");
         }
@@ -149,7 +146,6 @@ namespace TourCrow.Controllers
                 if(response.CharacterSet == null)
                 {
                     readStream = new StreamReader(receiveStream);
-                    
                 }
                 else
                 {
@@ -256,18 +252,42 @@ namespace TourCrow.Controllers
             //string[] items = Request.Form.GetValues("pid");
 
             string[] items = Request.QueryString.GetValues("pid");
-            
-            
+
+            //var context = new TourCrowDBEntities();
+            //var qr = from c in context.USERs select c;
+            //var us = qr.ToList();
+            //Response.Write(us);
             foreach (string values in items)
             {
-                Response.Write(values);
+                //Response.Write(values);
+                
 
-                
-                
             }
 
 
             return View("");
+        }
+
+        [HttpGet]
+        public ActionResult login_db()
+        {
+            string username = Convert.ToString(Request["userName"]);
+            string fbId = Convert.ToString(Request["fbId"]);
+            string[] items = Request.QueryString.GetValues("pid");
+
+            // Inset The Data 
+            using (var context = new TourCrowDBEntities())
+            {
+                var user = new USER { UserName = username, UserFBID = fbId , UserEmail = "s"};
+                context.USERs.Add(user);
+                context.SaveChanges();
+            }
+            
+            
+
+
+            Response.Write(items);
+            return View("Index");
         }
     }
 }

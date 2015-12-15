@@ -13,11 +13,15 @@ namespace TourCrow.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Home";
+            ViewBag.activePage = "Home";
             return View();
         }
 
         public ActionResult AboutUs()
         {
+            ViewBag.Title = "About Us";
+            ViewBag.activePage = "About";
             return View();
         }
     }
