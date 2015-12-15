@@ -26,23 +26,23 @@
 
     <script>
 
-    $(document).ready(function(){
-        if (@ViewBag.activePage == "Plan") {
-            $("#plan_nav").addClass("active");
+        $(document).ready(function(){
+            if (@ViewBag.activePage == "Plan") {
+                $("#plan_nav").addClass("active");
 
-        }
-        else if (@ViewBag.activePage == "Home") {
+            }
+            else if (@ViewBag.activePage == "Home") {
                 $("#home_nav").addClass("active");
 
-        }
-        else if (@ViewBag.activePage == "SignIn") {
-            $("#signin_nav").addClass("active");
+            }
+            else if (@ViewBag.activePage == "SignIn") {
+                $("#signin_nav").addClass("active");
 
-        }
-        else if (@ViewBag.activePage == "About") {
-            $("#about_nav").addClass("active");
+            }
+            else if (@ViewBag.activePage == "About") {
+                $("#about_nav").addClass("active");
 
-        }
+            }
         });
 
     </script>
@@ -50,11 +50,11 @@
     <script src="~/Scripts/fbsdk.js"></script>
     <script>
         // Load the SDK asynchronously
-        (function (thisdocument, scriptelement, id) {
-            
+        (function(thisdocument, scriptelement, id) {
+
             var js, fjs = thisdocument.getElementsByTagName(scriptelement)[0];
             if (thisdocument.getElementById(id)) return;
-            
+
             js = thisdocument.createElement(scriptelement);
             js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js";
@@ -81,18 +81,47 @@
         function statusChangeCallback(response) {
             if (response.status === 'connected') {
                 // Logged into your app and Facebook.
-                _i();
             } else if (response.status === 'not_authorized') {
                 // The person is logged into Facebook, but not your app.
 
             }
         }
 
-        function _login() {
+        function _onlyLogin() {
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    location.reload();
+                } else {
+                    FB.login(function(response) {
+                        // handle the response
+                        if (response.status === 'connected') {
+                            location.reload();
+                        } else if (response.status === 'not_authorized') {
+
+                        }
+                    }, { scope: 'public_profile,email' });
+                }
+            });
+        }
+
+        
+            function _login() {
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        _planSubmit();
+                    } else {
+                        $('#myModal').modal('show');
+                    }
+                });
+            }
+        
+        
+
+        function loginSucessfull() {
             FB.login(function(response) {
                 // handle the response
                 if (response.status === 'connected') {
-                    _i();
+                    _planSubmit();
                 } else if (response.status === 'not_authorized') {
                     // The person is logged into Facebook, but not your app.
                     console.log("Error" + response.error);
@@ -100,101 +129,172 @@
             }, { scope: 'public_profile,email' });
         }
 
-        function _i() {
+        function _planSubmit() {
             FB.api('/me', function(response) {
-                console.log(JSON.stringify(response));
+                //console.log(JSON.stringify(response));
+                //alert(response.name);
+                setValues(response.name, response.id);
+                submitFormWithData();
             });
         }
 
+        function setValues(userName,fbId) {
+            document.getElementById("userName").value = userName;
+            document.getElementById("fbId").value = fbId;
+        }
+
+
     </script>
+
+    <script>
+
+        function submitFormWithData() {
+            document.getElementById("testForm").submit();
+        }
+
+    </script>
+
+    <script>
+        $(window).load(function() {
+            // Check login Status
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    // Get name and Id
+                    FB.api('/me', function(newResponse) {
+                        document.getElementById("signin_nav").innerHTML = "<a>"+newResponse.name+"</a>";
+                        
+                    });
+                } else if (response.status === 'not_authorized') {
+                    document.getElementById("signin_nav").innerHTML = "<a> Login </a>";
+                }
+                else if (response.status === 'unknown') {
+                    document.getElementById("signin_nav").innerHTML = "<a> Login </a>";
+                }
+            });
+        });
+    </script>
+
+
+
 
 
 </head>
 
 <body>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content" style="background: transparent; border: 0px; box-shadow: unset; margin-top: 60px;">
-                <div class="modal-body" style="padding:0px; width: 400px; margin: 0px auto;background:#fff">
-                    <div class="loginpanel">
-                        <h3 style="width:100%;text-align:center;margin-bottom:25px;">Login Page</h3>
-                        <div class="txt">
-                            <input id="user" type="text" placeholder="Username" />
-                            <label for="user" class="entypo-user"></label>
-                        </div>
-                        <div class="txt">
-                            <input id="pwd" type="password" placeholder="Password" />
-                            <label for="pwd" class="entypo-lock"></label>
-                        </div>
-                        <div class="buttons">
-                            <input type="button" value="Login" />
-                            <span>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background: transparent; border: 0px; box-shadow: unset; margin-top: 60px;">
+            <div class="modal-body" style="padding: 0px; width: 400px; margin: 0px auto; background: #fff">
+                <div class="loginpanel">
+                    <h3 style="width: 100%; text-align: center; margin-bottom: 25px;">Login Page</h3>
+                    <div class="txt">
+                        <input id="user" type="text" placeholder="Username"/>
+                        <label for="user" class="entypo-user"></label>
+                    </div>
+                    <div class="txt">
+                        <input id="pwd" type="password" placeholder="Password"/>
+                        <label for="pwd" class="entypo-lock"></label>
+                    </div>
+                    <div class="buttons">
+                        <input type="button" value="Login"/>
+                        <span>
                                 <a href="" class="entypo-user-add register">Register</a>
                             </span>
-                        </div>
-
-                        <div class="hr">
-                            <div></div>
-                            <div>OR</div>
-                            <div></div>
-                        </div>
-
-                        <div class="social">
-                            <a onclick="_login();" class="facebook"></a>
-                        </div>
                     </div>
+
+                    <div class="hr">
+                        <div></div>
+                        <div>OR</div>
+                        <div></div>
+                    </div>
+
+                    <div class="social">
+                        <a onclick=" loginSucessfull(); " class="facebook"></a>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="site-header">
-        <div class="container">
-            <div class="main-header">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-10">
-                        <div class="logo">
-                            <a href="#">
-                                <img src="~/Content/images/logo.png" alt="TourCrow" title="TourCrowLogo">
-                            </a>
-                        </div> <!-- /.logo -->
-                    </div> <!-- /.col-md-4 -->
-                    <div class="col-md-8 col-sm-6 col-xs-2">
-                        <div class="main-menu">
-                            <ul class="visible-lg visible-md">
-                                <li id="home_nav">@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li id="plan_nav">@Html.ActionLink("Plan", "Index", "Plan")</li>
-                                <li id="about_nav">@Html.ActionLink("About Us", "AboutUs", "Home")</li>
-                                <li id="signin_nav">@Html.ActionLink("Login/Register", "Index", "SignIn")</li>
-                                
-                                
-                            </ul>
-                            <a href="#" class="toggle-menu visible-sm visible-xs">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                        </div> <!-- /.main-menu -->
-                    </div> <!-- /.col-md-8 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.main-header -->
+<div class="site-header">
+    <div class="container">
+        <div class="main-header">
             <div class="row">
-                <div class="col-md-12 visible-sm visible-xs">
-                    <div class="menu-responsive">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="plan.html">Plan</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="registration.html">Registration</a></li>
+                <div class="col-md-4 col-sm-6 col-xs-10">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="~/Content/images/logo.png" alt="TourCrow" title="TourCrowLogo">
+                        </a>
+                    </div> <!-- /.logo -->
+                </div> <!-- /.col-md-4 -->
+                <div class="col-md-8 col-sm-6 col-xs-2">
+                    <div class="main-menu">
+                        <ul class="visible-lg visible-md">
+                            <li id="home_nav">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li id="plan_nav">@Html.ActionLink("Plan", "Index", "Plan")</li>
+                            <li id="about_nav">@Html.ActionLink("About Us", "AboutUs", "Home")</li>
+                            <li id="signin_nav" style="cursor: pointer;" onclick=" _onlyLogin(); "><a>...</a></li>
+
+
+                            @*<li id="signin_nav">@Html.ActionLink("Login/Register", "Index", "SignIn")</li>*@
                         </ul>
-                    </div> <!-- /.menu-responsive -->
-                </div> <!-- /.col-md-12 -->
+                        <a href="#" class="toggle-menu visible-sm visible-xs">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div> <!-- /.main-menu -->
+                </div> <!-- /.col-md-8 -->
             </div> <!-- /.row -->
-        </div> <!-- /.container -->
-    </div>
+        </div> <!-- /.main-header -->
+        <div class="row">
+            <div class="col-md-12 visible-sm visible-xs">
+                <div class="menu-responsive">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><a href="plan.html">Plan</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                    </ul>
+                </div> <!-- /.menu-responsive -->
+            </div> <!-- /.col-md-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div>
 
-    @RenderBody()
+@RenderBody()
+
+<script src="~/Scripts/bootstrap.js"></script>
+
+<div class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="">
+                    </a>
+                </div>
+            </div> <!-- /.col-md-4 -->
+            <div class="col-md-4 col-sm-4">
+                <div class="copyright">
+                    <span>Copyright &copy; 2084 <a href="#">Company Name</a></span>
+                </div>
+            </div> <!-- /.col-md-4 -->
+            <div class="col-md-4 col-sm-4">
+                <ul class="social-icons">
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                    <li><a href="#" class="fa fa-flickr"></a></li>
+                    <li><a href="#" class="fa fa-rss"></a></li>
+                </ul>
+            </div> <!-- /.col-md-4 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</div>
 </body>
-
 
 </html>

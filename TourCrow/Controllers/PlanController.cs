@@ -48,6 +48,7 @@ namespace TourCrow.Controllers
             parseData(getHttpResponse);
 
             ViewBag.place_inpur = input;
+            Response.Write(ViewBag.nm);
 
             return View("Index");
         }
@@ -265,6 +266,28 @@ namespace TourCrow.Controllers
 
 
             return View("");
+        }
+
+        [HttpGet]
+        public ActionResult login_db()
+        {
+            string username = Convert.ToString(Request["userName"]);
+            string fbId = Convert.ToString(Request["fbId"]);
+            string[] items = Request.QueryString.GetValues("pid");
+
+            // Inset The Data 
+            using (var context = new TourCrowDBEntities())
+            {
+                var user = new USER { UserName = username, UserFBID = fbId , UserEmail = "s"};
+                context.USERs.Add(user);
+                context.SaveChanges();
+            }
+            
+            
+
+
+            Response.Write(items);
+            return View("Index");
         }
     }
 }
