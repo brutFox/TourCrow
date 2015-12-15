@@ -15,7 +15,7 @@ namespace TourCrow.Models
     public partial class RATING
     {
         public int RatingID { get; set; }
-        public int UserID { get; set; }
+        public string UserFBID { get; set; }
         public int PlaceID { get; set; }
         public Nullable<double> Rating1 { get; set; }
     

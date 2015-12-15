@@ -29,10 +29,6 @@ namespace TourCrow.Controllers
 
         public ActionResult Index()
         {
-            //string getHttpResponse = place_details("Ratargul");
-            ////Response.Write(getHttpResponse);
-            //parseData(getHttpResponse);
-
             ViewBag.Title = "Plan";
             ViewBag.activePage = "Plan";
             return View();
@@ -90,23 +86,13 @@ namespace TourCrow.Controllers
 
         public PlaceSuggestModel parseData(String json)
         {
-            //Response.Write(json);
-
             JavaScriptSerializer js = new JavaScriptSerializer();
             PlaceModel placeModel = js.Deserialize<PlaceModel>(json);
             PlaceSuggestModel getPlaceSuggestModel = null;
 
-            /*PlaceModel.ResultModel resultModel = placeModel.results;*/
 
             foreach (PlaceModel.ResultModel result in placeModel.results)
             {
-                //Response.Write(result.place_id + "</br>" + result.geometry.location.lat);
-                /*ViewBag.pm = placeModel.results;
-                ViewBag.place_id = result.place_id;
-                ViewBag.place_name = result.name;
-                ViewBag.place_lat = result.geometry.location.lat;
-                ViewBag.place_lng = result.geometry.location.lng;*/
-
                 string jsonData = place_suggest(result.geometry.location.lat, result.geometry.location.lng);
                 getPlaceSuggestModel = parseDataToShowSugg(jsonData);
                 break;
@@ -210,7 +196,7 @@ namespace TourCrow.Controllers
 
         public static string place_suggest(double lat, double lng)
         {
-            string urlAddress = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=50000&types=hospital&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+            string urlAddress = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=50000&types=amusement_park|cafe|food|park|mosque|cemetery|church|movie_theater|hindu_temple|zoo|stadium|library|shopping_mall|restaurant|point_of_interest&key=" + appKeys.GOOGLE_PLACE_API_KEY;
            
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -249,45 +235,17 @@ namespace TourCrow.Controllers
         [HttpGet]
         public ActionResult place_submit()
         {
-            //string[] items = Request.Form.GetValues("pid");
-
             string[] items = Request.QueryString.GetValues("pid");
 
-            //var context = new TourCrowDBEntities();
-            //var qr = from c in context.USERs select c;
-            //var us = qr.ToList();
-            //Response.Write(us);
             foreach (string values in items)
             {
-                //Response.Write(values);
                 
-
             }
 
 
             return View("");
         }
 
-        [HttpGet]
-        public ActionResult login_db()
-        {
-            string username = Convert.ToString(Request["userName"]);
-            string fbId = Convert.ToString(Request["fbId"]);
-            string[] items = Request.QueryString.GetValues("pid");
-
-            // Inset The Data 
-            using (var context = new TourCrowDBEntities())
-            {
-                var user = new USER { UserName = username, UserFBID = fbId , UserEmail = "s"};
-                context.USERs.Add(user);
-                context.SaveChanges();
-            }
-            
-            
-
-
-            Response.Write(items);
-            return View("Index");
-        }
+       
     }
 }

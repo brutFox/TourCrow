@@ -15,7 +15,7 @@ namespace TourCrow.Models
     public partial class COMMENT
     {
         public int CommentID { get; set; }
-        public int UserID { get; set; }
+        public string UserFBID { get; set; }
         public string PlaceID { get; set; }
         public string Comment1 { get; set; }
     

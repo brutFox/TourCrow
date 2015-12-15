@@ -22,7 +22,7 @@ namespace TourCrow.Models
     
         public int PackageID { get; set; }
         public string Title { get; set; }
-        public int UserID { get; set; }
+        public string UserFBID { get; set; }
     
         public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

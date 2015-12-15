@@ -137,8 +137,6 @@
     <Compile Include="Controllers\JsonParsingController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\SignInController.cs" />
-    <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -368,8 +366,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\View1.cshtml" />
-    <Content Include="Views\SignUp\Index.cshtml" />
-    <Content Include="Views\SignIn\Index.cshtml" />
     <Content Include="Views\Plan\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\JsonParsing\Index.cshtml" />
