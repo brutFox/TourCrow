@@ -193,9 +193,16 @@
     <Content Include="Content\images\AjaxLoader.gif" />
     <Content Include="Content\images\grabbing.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo1.png" />
+    <Content Include="Content\images\logo2.png" />
+    <Content Include="Content\images\main_image\birishiri.jpg" />
     <Content Include="Content\images\main_image\coxs_bazar.png" />
+    <Content Include="Content\images\main_image\Kuakata.jpg" />
     <Content Include="Content\images\main_image\mohasthangor.png" />
+    <Content Include="Content\images\main_image\nijhumdip.jpg" />
     <Content Include="Content\images\main_image\rangamati.png" />
+    <Content Include="Content\images\main_image\slide\birishiri.jpg" />
+    <Content Include="Content\images\main_image\slide\rangamati.jpg" />
     <Content Include="Content\images\main_image\slide\slide_1.jpg" />
     <Content Include="Content\images\main_image\slide\slide_2.jpg" />
     <Content Include="Content\images\main_image\slide\slide_3.jpg" />

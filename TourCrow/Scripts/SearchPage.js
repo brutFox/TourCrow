@@ -21,7 +21,7 @@ $("#submit").click(function () {
 
 function makeSuggPlace(placeId, name, photo, ratting, index) {
     //placeId = placeId.replace("-", "/");
-    var retData = "<div class='sugg-element'> <div class='main-area-for-element'><div class='imageContaner'><img src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo + "&key=AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s' alt=''/> <div class='action-for-sugg'><input type='button' value='Add' onclick=\"addItemToPackage(" + index + ")\"class='add-to-list'/> </div></div><p class='name-text'>" + name + "</p> <p class='ratting-text'>Ratting : " + ratting + "</p></div></div>";
+    var retData = "<div class='sugg-element'> <div class='main-area-for-element'><div class='imageContaner'><img src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo + "&key=AIzaSyCSRXTF9nWyECowpOmrihkoCMtnJmVQQQo' alt=''/> <div class='action-for-sugg'><input type='button' value='Add' onclick=\"addItemToPackage(" + index + ")\"class='add-to-list'/> </div></div><p class='name-text'>" + name + "</p> <p class='rating-text'>Rating : " + ratting + "</p></div></div>";
     return retData;
 }
 
@@ -32,7 +32,7 @@ function addItemToPackage(index) {
 }
 
 function plan_div(place_photo, place_name, place_address, place_id, index) {
-    var inside_div = "<div class='plan-single-element' id='" + place_id + "'><input type='hidden' name='pid' value='" + place_id + "'><input type='hidden' name='photoid' value='" + place_photo + "'><img src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + place_photo + "&key=AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s' alt=''/><div class='desc-elemetn'><h3>" + place_name + "</h3><p>" + place_address + "</p><div class='list-action-area'><div class='remove-place'><span onclick = 'remove_view(" + index + ")'>Remove</span></div><div class='more-info'><span>More Info</span></div></div></div><div class='clear'></div></div>";
+    var inside_div = "<div class='plan-single-element' id='" + place_id + "'><input type='hidden' name='pid' value='" + place_id + "'><input type='hidden' name='photoid' value='" + place_photo + "'><img src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + place_photo + "&key=AIzaSyCSRXTF9nWyECowpOmrihkoCMtnJmVQQQo' alt=''/><div class='desc-elemetn'><h3>" + place_name + "</h3><p>" + place_address + "</p><div class='list-action-area'><div class='remove-place'><span onclick = 'remove_view(" + index + ")'>Remove</span></div><div class='more-info'><span>More Info</span></div></div></div><div class='clear'></div></div>";
 
     addNewMarkerToAdd(newData[index]["place_latitude"], newData[index]["place_longitude"], index);
     //initialize();

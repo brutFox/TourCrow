@@ -76,12 +76,10 @@ namespace TourCrow.Controllers
             var get_packid = from pckid in tcdb.PACKAGEs where pckid.UserFBID == fbId.ToString() select pckid.PackageID;
             var packid = get_packid.AsEnumerable().LastOrDefault();
 
-            //var items = pids.Zip(photos, (pid, photo) => new { pID = pid, phID = photo });
-            //insert user-package
-            foreach (string placeid in pids)
+            
+            for (int i = 0, j = 0; i < pids.Count() && j < photos.Count(); i++, j++)
             {
-                var userpack_insert_query = new USER_PACKAGE { PackageID = Convert.ToInt32(packid), PlaceID = placeid };
-                //var userpack_insert_query = new USER_PACKAGE { PackageID = Convert.ToString(packid), PlaceID =  placeid.pID, PhotoKey=placeid};
+                var userpack_insert_query = new USER_PACKAGE { PackageID = Convert.ToInt32(packid), PlaceID = pids[i], PhotoKey = photos[i]};
                 tcdb.USER_PACKAGE.Add(userpack_insert_query);
                 tcdb.SaveChanges();
             }

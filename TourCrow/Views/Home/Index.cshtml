@@ -16,13 +16,7 @@
                                 <p>
                                     The Sundarbans is a natural region in the Bengal region comprising Eastern India and Bangladesh. It is the largest single block of tidal halophytic mangrove forest in the world.
                                 </p>
-
-                                @*@Html.ActionLink("Add to Plan", "Index", "Plan", new { @class="slider-btn"})*@
-
-                                @*<input type="hidden" id="searchbar" name="searchbar" value="ChIJFbPHwqpMADoRPMkWu8-rFkc" />*@
-                                @Html.ActionLink("Add to Plan", "Index", "Plan", new { searchbar = "ChIJFbPHwqpMADoRPMkWu8-rFkc" }, new { @id = "submit", @name = "submit", @class = "slider-btn" })
-                                @*<input type="button" id="submit" name="submit" class="slider-btn" value="Add to Plan" />*@
-
+                                @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "Sundarbans" }, new { @class = "slider-btn" })
                             </div>
 
                         </div>
@@ -41,7 +35,7 @@
                                 <p>
                                     Cox's Bazar is a town, a fishing port and district headquarters in Bangladesh. It is one of the world's longest uninterrupted natural sandy sea beaches, The beach in Cox's Bazar is an unbroken 125 km sandy sea beach with a gentle slope.
                                 </p>
-                                <a href="#" class="slider-btn">Add to Plan</a>
+                                @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "Cox's+Bazar" }, new { @class = "slider-btn" })
                             </div>
                         </div>
                     </div>
@@ -55,9 +49,9 @@
                         <div class="col-md-5 col-lg-4">
                             <div class="flex-caption visible-lg">
                                 <span class="price">Featured</span>
-                                <h3 class="title">Safari park, Gazipur</h3>
-                                <p>Bangabandhu Sheikh Mujib Safari Park at Gazipur, located by ShuvroMegh</p>
-                                <a href="#" class="slider-btn">Add to Plan</a>
+                                <h3 class="title">Bandarban</h3>
+                                <p>Bandarban Hill District is the remotest and least populated district in Bangladesh. The lure of the tallest peaks of Bangladesh, treks through virgin forests and chance to meet more than 15 tribes of the region up close is growing both among Bangladeshis and tourists from other countries.</p>
+                                @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "Bandarban" }, new { @class = "slider-btn" })
                             </div>
                         </div>
                     </div>
@@ -65,7 +59,7 @@
             </li>
 
             <li>
-                <img src="~/Content/images/main_image/slide/slide_2.jpg" alt="Special 1">
+                <img src="~/Content/images/main_image/slide/rangamati.jpg" alt="Special 1">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 col-lg-4">
@@ -75,7 +69,7 @@
                                 <p>
                                     Rangamati is the administrative headquarters of Rangamati Hill District in the Chittagong Hill Tracts of Bangladesh. It is also a Capital city of Chittagong Hill Tracts.
                                 </p>
-                                <a href="#" class="slider-btn">Add to Plan</a>
+                                @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "Rangamati" }, new { @class = "slider-btn" })
                             </div>
                         </div>
                     </div>
@@ -92,36 +86,36 @@
                 <div class="list-item">
                     <div class="list-thumb">
                         <div class="title">
-                            <h4>Cox's Bazar</h4>
+                            <h4>Birishiri</h4>
                         </div>
-                        <img src="~/Content/images/main_image/coxs_bazar.png" alt="destination 1">
+                        <img src="~/Content/images/main_image/birishiri.jpg" alt="Birishiri">
                     </div>
                     <div class="list-content">
-                        <a href="#" class="price-btn">Add to plan</a>
+                        @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "birishiri" }, new { @class = "price-btn" })
                     </div>
                 </div>
 
                 <div class="list-item">
                     <div class="list-thumb">
                         <div class="title">
-                            <h4>Rangamati</h4>
+                            <h4>Kuakata</h4>
                         </div>
-                        <img src="~/Content/images/main_image/rangamati.png" alt="destination 1">
+                        <img src="~/Content/images/main_image/Kuakata.jpg" alt="destination 1">
                     </div>
                     <div class="list-content">
-                        <a href="#" class="price-btn">Add to plan</a>
+                        @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "kuakata" }, new { @class = "price-btn" })
                     </div>
                 </div>
 
                 <div class="list-item">
                     <div class="list-thumb">
                         <div class="title">
-                            <h4>Sundarban</h4>
+                            <h4>Nijhum Dip</h4>
                         </div>
-                        <img src="~/Content/images/main_image/sundarban.png" alt="destination 1">
+                        <img src="~/Content/images/main_image/nijhumdip.jpg" alt="destination 1">
                     </div>
                     <div class="list-content">
-                        <a href="#" class="price-btn">Add to plan</a>
+                        @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "Nijhum+Dwip" }, new { @class = "price-btn" })
                     </div>
                 </div>
 
@@ -133,7 +127,7 @@
                         <img src="~/Content/images/main_image/sylhet.png" alt="destination 1">
                     </div>
                     <div class="list-content">
-                        <a href="#" class="price-btn">Add to plan</a>
+                        @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "Sylhet" }, new { @class = "price-btn" })
                     </div>
                 </div>
 
@@ -145,7 +139,8 @@
                         <img src="~/Content/images/main_image/mohasthangor.png" alt="destination 1">
                     </div>
                     <div class="list-content">
-                        <a href="#" class="price-btn">Add to plan</a>
+                        
+                        @Html.ActionLink("Add to Plan", "Index", "Plan", new { search = "mohasthangor" }, new { @class = "price-btn" })
                     </div>
                 </div>
 
@@ -154,39 +149,10 @@
     </div>
 
     <div class="middle-content container">
-        This is the main Content
+        
     </div>
 
-    <div class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <div class="footer-logo">
-                        <a href="index.html">
-                            <img src="~/Content/images/logo.png" alt="Logo">
-                        </a>
-                    </div>
-                </div> <!-- /.col-md-4 -->
-                <div class="col-md-4 col-sm-4">
-                    <div class="copyright">
-                        <span>
-
-                            Copyright &copy; 2084 <a href="#">Tour Crow</a>
-
-                        </span>
-                    </div>
-                </div> <!-- /.col-md-4 -->
-                <div class="col-md-4 col-sm-4">
-                    <ul class="social-icons">
-                        <li><a href="#" class="fa fa-facebook"></a></li>
-                        <li><a href="#" class="fa fa-twitter"></a></li>
-                        <li><a href="#" class="fa fa-linkedin"></a></li>
-                        <li><a href="#" class="fa fa-flickr"></a></li>
-                    </ul>
-                </div> <!-- /.col-md-4 -->
-            </div> <!-- /.row -->
-        </div> <!-- /.container -->
-    </div>
+    
 
     <script src="~/Scripts/vendor/jquery-1.11.0.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>

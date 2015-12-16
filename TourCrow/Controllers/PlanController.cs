@@ -33,7 +33,7 @@ namespace TourCrow.Controllers
             ViewBag.Title = "Plan";
             ViewBag.activePage = "Plan";
 
-            search_val = Convert.ToString(Request["searchbar"]) == null ? "null" : Convert.ToString(Request["searchbar"]);
+            search_val = Convert.ToString(Request["search"]) == null ? "null" : Convert.ToString(Request["search"]);
 
             ViewBag.pageGetValue = search_val;
 
