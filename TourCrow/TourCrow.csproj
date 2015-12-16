@@ -353,6 +353,7 @@
     <Content Include="Scripts\vendor\jquery.gmap3.min.js" />
     <Content Include="Scripts\vendor\modernizr-2.6.1-respond-1.1.0.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Plan\GetValuePrint.aspx" />
     <Content Include="Views\Plan\json.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

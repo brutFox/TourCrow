@@ -43,4 +43,24 @@ function remove_view(index) {
     $("#" + newData[index]["place_id"]).remove();    
 }
 
+function checkGetParm() {
+
+
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "/plan/GetValiePrint", success: function (result) {
+                alert(result);
+            }
+        });
+
+
+    });
+
+}
+
+
+
+checkGetParm();
+
 
