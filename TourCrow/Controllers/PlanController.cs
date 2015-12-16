@@ -25,12 +25,17 @@ namespace TourCrow.Controllers
         // GET: /Plan/
 
         //private TourCrowDBEntities tcdb = new TourCrowDBEntities();
+        public string search_val = "null";
 
-
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.Title = "Plan";
             ViewBag.activePage = "Plan";
+
+            search_val = Convert.ToString(Request["searchbar"]) == null ? "null" : Convert.ToString(Request["searchbar"]);
+            Response.Write(search_val);
+
             return View();
         }
 
