@@ -34,9 +34,17 @@ namespace TourCrow.Controllers
             ViewBag.activePage = "Plan";
 
             search_val = Convert.ToString(Request["searchbar"]) == null ? "null" : Convert.ToString(Request["searchbar"]);
-            Response.Write(search_val);
+            
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetValuePrint()
+        {
+            Response.Write(search_val);
+
+            return View("GetValuePrint");
         }
 
         [HttpPost]
