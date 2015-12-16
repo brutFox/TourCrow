@@ -33,7 +33,7 @@ body {
 }
 
 .plan-main-div {
-  width: 1025px;
+    width: auto;
     position: relative;
     margin: 0px auto;
     margin-top: 30px;
@@ -52,28 +52,25 @@ body {
     margin: 0px auto;
 }
 .plan-main-div .plan-body .plan-suggestion {
-  width: 230px;
+  width: 25%;
   float: left;
   height: auto;
   position: relative;
 }
 .plan-main-div .plan-body .plan-day-list {
-  width: 555px;
-  float: left;
-  background: #ffffff;
-  margin-left: 10px;
-  margin-right: 10px;
+    width: 40%;
+    float: left;
+    background: #ffffff;
 }
 .plan-main-div .plan-body .plan-map {
-  width: 220px;
+  width: 35%;
   float: left;
-  background: #aaa;
-  height: 1000px;
+  height: 600px;
 }
 
 /* Left Side Sugg */
 .my-place, .recommend {
-  width: 50%;
+  width: 100%;
   float: left;
   height: 35px;
   text-align: center;
@@ -92,9 +89,10 @@ body {
   border-right: 10px solid transparent;
   border-top: 10px solid #2477ff;
   position: absolute;
-  top: 48px;
-  float: left;
-  content: '';
+  top: 35px;
+    float: left;
+    content: "";
+    left: 45%;
 }
 
 .place-recom-inactive {
@@ -112,9 +110,9 @@ body {
 
 .sugg-element {
   float: left;
-  width: 100px;
-  height: 125px;
-  margin-left: 10px;
+  width: 45%;
+  height: 210px;
+  margin-left: 2%;
   margin-top: 15px;
   box-shadow: 0px 0px 2px #888888;
   border-radius: 3px;
@@ -123,13 +121,11 @@ body {
   cursor: pointer;
 }
 .sugg-element .main-area-for-element {
-  position: absolute;
-  width: inherit;
-  height: auto;
+  height: 100%;
 }
 .sugg-element .main-area-for-element img {
-  width: inherit;
-  height: 90px;
+  width: 100%;
+  height: 130px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -140,14 +136,21 @@ body {
   color: #0946a0;
 }
 .sugg-element .main-area-for-element .action-for-sugg {
+    position: absolute;
   visibility: hidden;
   z-index: 1;
-  margin-top: -108px;
-  margin-left: 20px;
+  margin-left: 50px;
+    margin-top: -80px;
 }
+
 .sugg-element .main-area-for-element .action-for-sugg .add-to-list {
   color: #272727;
   background: #ffc000;
+}
+.add-to-list {
+    position: absolute;
+    top: 50%;
+    left: 33%;
 }
 .sugg-element .main-area-for-element .action-for-sugg .remove-from-list {
   margin-top: 10px;
@@ -199,7 +202,7 @@ body {
 }
 .plan-day-list .plan-main-element {
   float: left;
-  width: 480px;
+  width: 95%;
   margin: 65px 5px 10px 5px;
   height: inherit;
 }
@@ -211,14 +214,15 @@ body {
   margin-top: 10px;
 }
 .plan-day-list .plan-main-element .plan-single-element img {
-  height: 150px;
+  height: 170px;
   width: 150px;
   float: left;
   padding: 5px;
+  width: 100%;
 }
 .plan-day-list .plan-main-element .plan-single-element .desc-elemetn {
   float: left;
-  width: 300px;
+  width: 100%;
   padding: 6px 5px 5px 10px;
 }
 .plan-day-list .plan-main-element .plan-single-element .desc-elemetn h3 {
@@ -260,12 +264,14 @@ body {
   content: "";
 }
 .search-page-for-planing{
-    width: 900px;
+    font-size: 1.2em;
+    width: 90%;
     padding: 8px 15px;
     border-radius: 3px;
     background: #fff;
     border: 1px solid #333;
     transition: 500ms;
+    height: 55px;
 }
 .search-page-for-planing:after{
     content: url("images/search_icon.png");
@@ -285,8 +291,26 @@ body {
     border: 1px solid #333;
     border-radius: 3px;
     transition: 500ms;
+    height: 54px;
+    font-size: 1.3em;
 }
 .search-page-for-planing-button:hover{
     cursor: pointer;
     box-shadow: 0px 0px 3px #333;
+    height: 54px;
+}
+
+@media screen and (min-width: 1200px) {
+    .menu_contailner {
+        width: 90%;
+    }
+}
+.ratting-text {
+    color: #747474;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.place-text {
+    font-size: 14px;
+    padding-top: 5px;
 }

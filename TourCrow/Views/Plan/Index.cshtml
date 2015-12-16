@@ -8,114 +8,116 @@
 
 <body>
 
-    <div class="log-reg-top" id="login_reg"></div>
+    <input type="hidden" id="getValue" value="@ViewBag.pageGetValue"/>
 
-    <div class="contact-page">
-        <div class="container">
+<div class="log-reg-top" id="login_reg"></div>
 
-            <!-- Here place the main Content  -->
-            
-            <div class="plan-main-div">
-                
-                    <div class="plan-head">
-                        @Html.TextBox("Searchbar", null, new {Class = "search-page-for-planing", placeholder = "Search...", name = "searchbar", id = "searchbar"})
-                        <input type="button" class="search-page-for-planing-button" id="submit" name="submit" value="search"/>
+<div class="">
+    <div class="container menu_contailner">
 
+        <!-- Here place the main Content -->
+
+        <div class="plan-main-div">
+
+            <div class="plan-head">
+                @Html.TextBox("Searchbar", null, new {Class = "search-page-for-planing", placeholder = "Search...", name = "searchbar", id = "searchbar"})
+                <input type="button" class="search-page-for-planing-button" id="submit" name="submit" value="Search"/>
+
+            </div>
+
+            <div class="plan-body">
+                <div class="plan-suggestion">
+                    <div class="sugg-heading-button">
+                        @*<div class="my-place place-recom-inactive"><span>My Place</span></div>*@
+                        <div class="recommend place-recom-active"><span>Recommend</span></div>
                     </div>
-                
-                <div class="plan-body">
-                    <div class="plan-suggestion">
-                        <div class="sugg-heading-button">
-                            @*<div class="my-place place-recom-inactive"><span>My Place</span></div>*@
-                            <div class="recommend place-recom-active"><span>Recommend</span></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="sugg-main-area" id="suggestPlace">
+                    <div class="clear"></div>
+                    <div class="sugg-main-area" id="suggestPlace">
 
-
-                        </div>
-                    </div>
-                    <div class="plan-day-list">
-                        <div class="day-number-show">
-                            <h2>Days</h2>
-                            <div class="no-day no-day-active">
-                                <p>1</p>
-                            </div>
-                            <div class="no-day">
-                                <p>2</p>
-                            </div>
-                            <div class="no-day">
-                                <p>3</p>
-                            </div>
-                            <div class="no-day">
-                                <p>4</p>
-                            </div>
-                        </div>
-
-                        @using (Html.BeginForm("CheckSignIn", "Profile", FormMethod.Get, new { id = "testForm" }))
-                        {
-
-                            <div class="plan-main-element" id="plan_list">
-
-                            </div>
-
-                            <input type="hidden" id="userName" name="userName"/>
-                            <input type="hidden" name="fbId" id="fbId"/>
-    
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-lg" onclick="_login();">
-                                Submit
-                            </button>
-
-                        }
-
-
-                    </div>
-                    <div class="plan-map map-holder">
 
                     </div>
                 </div>
+                <div class="plan-day-list">
+                    @*<div class="day-number-show">
+                        <h2>Days</h2>
+                        <div class="no-day no-day-active">
+                            <p>1</p>
+                        </div>
+                        <div class="no-day">
+                            <p>2</p>
+                        </div>
+                        <div class="no-day">
+                            <p>3</p>
+                        </div>
+                        <div class="no-day">
+                            <p>4</p>
+                        </div>
+                    </div>*@
+
+                    @using (Html.BeginForm("CheckSignIn", "Profile", FormMethod.Get, new {id = "testForm"}))
+                    {
+
+                        <div class="plan-main-element" id="plan_list">
+
+                        </div>
+
+                        <input type="hidden" id="userName" name="userName"/>
+                        <input type="hidden" name="fbId" id="fbId"/>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-lg" onclick=" _login(); ">
+                            Submit
+                        </button>
+
+                    }
+
+
+                </div>
+                <div class="plan-map map-holder" id="googleMap">
+
+                </div>
             </div>
-
         </div>
+
     </div>
+</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/SearchPage.js"></script>
-    <!-- Google Map -->
-    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script src="~/Scripts/vendor/jquery.gmap3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script> window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>') </script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/SearchPage.js"></script>
+<!-- Google Map -->
+    <script src="http://maps.google.com/maps/api/js?sensor=false&.js"></script>
+<script src="~/Scripts/vendor/jquery.gmap3.min.js"></script>
 
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus()
-        })
-    </script>
+<script>
+    $('#myModal').on('shown.bs.modal', function() {
+        $('#myInput').focus()
+    })
+</script>
 
-    <!-- Google Map Init-->
+<!-- Google Map Init-->
 <script type="text/javascript">
-    var lat = @ViewBag.place_lat;
-    var lng = @ViewBag.place_lng;
-    jQuery(function($){
-        $('.first-map, .map-holder').gmap3({
-            marker:{
-                address: '@ViewBag.place_lat, @ViewBag.place_lng'
+    
+    /*jQuery(function($) {
+        $('.map-holder').gmap3({
+            marker: {
+                address: '23.7808875, 90.2792399',
+                visibility: false
             },
-            map:{
-                options:{
-                    zoom: 16
+            map: {
+                options: {
+                    zoom: 7,
                     scrollwheel: false,
-                    streetViewControl : true
+                    streetViewControl: true
                 }
             }
         });
     });
-    
+
 
     function initMap() {
-        var myLatLng = {lat: @ViewBag.place_lat, lng: @ViewBag.place_lng};
+        var myLatLng = { lat: 23.7808875, lng: 90.2792399 };
 
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -130,8 +132,62 @@
             position: myLatLng,
             title: 'Hello World!'
         });
+    }*/
+
+    var longitudeArr = new Array();
+    var latitudeArr = new Array();
+    var mapArr = new Array();
+    var newMap;
+
+    $(document).ready(function () {
+
+        var moptions = {
+            center: new google.maps.LatLng(23.7808875, 90.2792399),
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        map = new google.maps.Map(document.getElementById("googleMap"), moptions);
+
+        mark = new google.maps.Marker({
+            position: new google.maps.LatLng(23.7808875, 90.2792399),
+            map: null
+        });
+    });
+
+    /*function loadScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s&sensor=false&callback=initialize";
+        document.body.appendChild(script);
+    }*/
+
+    //window.onload = loadScript;
+
+    function updateMap(addOrRemove) {
+
+        console.log(latitudeArr.length+" - ");
+        for (var i = 0; i < latitudeArr.length; i++) {
+            mark = new google.maps.Marker({
+                position: new google.maps.LatLng(latitudeArr[i], longitudeArr[i]),
+                map: map
+            });
+            mark.setMap(mapArr[i]);
+        }
     }
 
+    function addNewMarkerToAdd(latitudeNew, longitudeNew,position) {
+        longitudeArr[position] = longitudeNew;
+        latitudeArr[position] = latitudeNew;
+        mapArr[position] = map;
+        console.log(latitudeNew + " - " + longitudeNew);
+        updateMap();
+    }
+
+    function deleteMarker(position) {
+        mapArr[position] = null;
+        updateMap();
+    }
 
 
 </script>
