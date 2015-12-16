@@ -196,7 +196,7 @@ namespace TourCrow.Controllers
 
         public static string place_suggest(double lat, double lng)
         {
-            string urlAddress = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=50000&types=amusement_park|cafe|food|park|mosque|cemetery|church|movie_theater|hindu_temple|zoo|stadium|library|shopping_mall|restaurant|point_of_interest&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+            string urlAddress = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=50000&types=natural_feature|amusement_park|cafe|food|park|mosque|cemetery|church|movie_theater|hindu_temple|zoo|stadium|library|shopping_mall|restaurant|point_of_interest&key=" + appKeys.GOOGLE_PLACE_API_KEY;
            
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();

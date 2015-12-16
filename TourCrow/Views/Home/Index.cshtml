@@ -17,8 +17,13 @@
                                 <p>
                                     The Sundarbans is a natural region in the Bengal region comprising Eastern India and Bangladesh. It is the largest single block of tidal halophytic mangrove forest in the world.
                                 </p>
-                                @Html.ActionLink("Add to Plan", "Index", "Plan", new { @class="slider-btn"})
-                                @*<a href="~/" class="slider-btn">Add to Plan</a>*@
+
+                                @*@Html.ActionLink("Add to Plan", "Index", "Plan", new { @class="slider-btn"})*@
+                                
+                                    @*<input type="hidden" id="searchbar" name="searchbar" value="ChIJFbPHwqpMADoRPMkWu8-rFkc" />*@
+                                    @Html.ActionLink("Add to Plan", "Index", "Plan", new { searchbar = "ChIJFbPHwqpMADoRPMkWu8-rFkc" }, new { @id = "submit", @name = "submit", @class = "slider-btn" })
+                                    @*<input type="button" id="submit" name="submit" class="slider-btn" value="Add to Plan" />*@
+                                
                             </div>
                             
                         </div>

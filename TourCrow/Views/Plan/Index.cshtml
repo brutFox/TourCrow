@@ -16,14 +16,13 @@
             <!-- Here place the main Content  -->
             
             <div class="plan-main-div">
-                @using (Html.BeginForm("Search_Place", "Plan", FormMethod.Post))
-                {
+                
                     <div class="plan-head">
                         @Html.TextBox("Searchbar", null, new {Class = "search-page-for-planing", placeholder = "Search...", name = "searchbar", id = "searchbar"})
                         <input type="button" class="search-page-for-planing-button" id="submit" name="submit" value="search"/>
 
                     </div>
-                }
+                
                 <div class="plan-body">
                     <div class="plan-suggestion">
                         <div class="sugg-heading-button">
