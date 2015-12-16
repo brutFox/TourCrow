@@ -11,7 +11,7 @@ $("#submit").click(function () {
     $.getJSON("/plan/getJsonData?place_name=" + getData, function (data) {
         newData = data;
         var htmlToset = "";
-        var len = newData.length > 8 ? 8 : newData.length;
+        var len = newData.length > 16 ? 16 : newData.length;
         for (var i = 0; i < len; i++) {
             htmlToset += makeSuggPlace(newData[i]["place_id"], newData[i]["place_name"], newData[i]["place_photo"], newData[i]["place_rating"],i);
         }
