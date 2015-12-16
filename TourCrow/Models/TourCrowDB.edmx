@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TourCrowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TourCrowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COMMENT">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -49,6 +49,7 @@
           <Property Name="PackageID" Type="int" Nullable="false" />
           <Property Name="PlaceID" Type="varchar(max)" Nullable="false" />
           <Property Name="Day" Type="varchar(max)" />
+          <Property Name="PhotoKey" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_COMMENT_USER">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
@@ -125,7 +126,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TourCrowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TourCrowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="COMMENT">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -177,6 +178,7 @@
           <Property Name="PackageID" Type="Int32" Nullable="false" />
           <Property Name="PlaceID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Day" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhotoKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PACKAGE" Relationship="Self.FK_USER_PACKAGE_PACKAGE" FromRole="USER_PACKAGE" ToRole="PACKAGE" />
         </EntityType>
         <Association Name="FK_COMMENT_USER">
@@ -303,6 +305,7 @@
                 <ScalarProperty Name="PackageID" ColumnName="PackageID" />
                 <ScalarProperty Name="PlaceID" ColumnName="PlaceID" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="PhotoKey" ColumnName="PhotoKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

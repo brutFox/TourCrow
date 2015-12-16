@@ -14,7 +14,6 @@ namespace TourCrow.Models
     
     public partial class USER
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USER()
         {
             this.COMMENTs = new HashSet<COMMENT>();
@@ -28,11 +27,8 @@ namespace TourCrow.Models
         public string UserName { get; set; }
         public string UserPassword { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMMENT> COMMENTs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PACKAGE> PACKAGEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RATING> RATINGs { get; set; }
     }
 }

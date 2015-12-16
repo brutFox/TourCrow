@@ -147,6 +147,7 @@
       <DependentUpon>TourCrowDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PlaceModel.cs" />
+    <Compile Include="Models\PlaceProfileSearch.cs" />
     <Compile Include="Models\PlaceSearchModel.cs" />
     <Compile Include="Models\PlaceSuggestModel.cs" />
     <Compile Include="Models\RATING.cs">
