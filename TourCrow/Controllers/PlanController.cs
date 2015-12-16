@@ -26,7 +26,7 @@ namespace TourCrow.Controllers
 
         //private TourCrowDBEntities tcdb = new TourCrowDBEntities();
         public string search_val = "null";
-
+        
         [HttpGet]
         public ActionResult Index()
         {
