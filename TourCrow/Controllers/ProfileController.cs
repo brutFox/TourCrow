@@ -16,6 +16,7 @@ namespace TourCrow.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Title = "Plan";
             return View();
         }
 

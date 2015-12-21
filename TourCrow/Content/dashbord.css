@@ -1,0 +1,153 @@
+h1,h2,h3,h4,h5,h6{
+    color: #ffffff;
+}
+p,span{
+    color: #ffffff;
+}
+.left_side_dash{
+    padding-right: 0px;
+    padding-left: 0px;
+    position: absolute;
+    background: #333;
+    height: 100%;
+}
+.right_side_dash{
+    float: right;
+    position: absolute;
+    background: #fff;
+    height: 100%;
+    right: 0px;
+}
+.textCenter{
+    text-align: center;
+}
+.tourItem{
+    font-size: 1.2em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0px;
+    cursor: pointer;
+}
+.tourItemEveryDiv{
+    width: 100%;
+    position: relative
+}
+
+.tourItemACtive{
+    background: #999999;
+}
+
+.dashbord-element {
+    margin: 5%;
+    float: left;
+    height: auto;
+    width: 90%;
+    position: relative;
+    box-shadow: 0px 0px 1px #999;
+    margin-top: 10px;
+    border-radius: 5px 5px 0px 0px;
+    transition: 500ms;
+}
+
+.dashbord-element:hover {
+    box-shadow: 0px 0px 7px #565656;
+}
+
+@media (min-width:900px) {
+    .dashbord-element {
+        margin: 2.5%;
+        float: left;
+        height: auto;
+        width: 45%;
+        position: relative;
+        box-shadow: 0px 0px 1px #444;
+        margin-top: 10px;
+        border-radius: 5px 5px 0px 0px;
+    }
+}
+
+@media (min-width:1200px) {
+    .dashbord-element {
+        margin: 2%;
+        float: left;
+        height: auto;
+        width: 29%;
+        position: relative;
+        box-shadow: 0px 0px 1px #444;
+        margin-top: 10px;
+        border-radius: 5px 5px 0px 0px;
+    }
+}
+
+.dashbord-element img {
+    height: 170px;
+    width: 150px;
+    float: left;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+}
+.dashbord-element .desc-elemetn {
+    float: left;
+    width: 100%;
+    padding: 6px 5px 5px 10px;
+}
+.dashbord-element .desc-elemetn h2 {
+    color: #0946a0;
+}
+.dashbord-element .desc-elemetn p {
+    color: #5c5c5c;
+}
+.dashbord-element .desc-elemetn .list-action-area {
+    width: 100%;
+    margin-top: 8px;
+}
+.dashbord-element .desc-elemetn .list-action-area .move-to-days, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .remove-place, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .more-info {
+    margin: 0px;
+    padding: 0px;
+    width: 30%;
+    font-size: .8em;
+    border-radius: 7px;
+    border: 0px;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 5px 0px;
+    background: #0946a0;
+    float: left;
+    text-align: center;
+    transition: 500ms;
+}
+.dashbord-element .desc-elemetn .list-action-area .move-to-days:hover, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .remove-place:hover, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .more-info:hover {
+    box-shadow: 0px 2px 6px #717171;
+}
+.dashbord-element .desc-elemetn .list-action-area .remove-place, .plan-day-list .plan-main-element .plan-single-element .desc-elemetn .list-action-area .more-info {
+    margin-left: 3%;
+}
+.dashbord-element .desc-elemetn .list-action-area .remove-place:after {
+    background-image: url("../img/remove.png");
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+    padding: 2px 20px 0px 2px;
+    margin-left: 5px;
+    content: "";
+}
+.colorBlack{
+    color: #333333;
+}
+.clear {
+    clear: both;
+}
+.circle-image{
+    height: 60px;
+    width: 60px;
+    padding: 10px;
+    border-radius: 100px;
+    border: 1px solid #959595;
+    transition: 300ms;
+    cursor: pointer;
+}
+.circle-image:hover{
+    box-shadow: 0px 0px 3px #656565;
+    transform: rotate(-7deg);
+}

@@ -1,10 +1,137 @@
-﻿@{
-    Layout = "~/Views/Shared/_NavBar.cshtml";
+﻿@using TourCrow.Controllers
+@using TourCrow.Models
+
+@{
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
-
 <body>
+<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 left_side_dash">
+    <div class="col-xs-12">
+        <h1 style="text-align: center; margin-top: 30px;">Tour List</h1>
+    </div>
+    <div style="width: 100%; background: #999999; height: 1px; float: left; margin-top: 20px;"></div>
+    <div style="margin-top: 100px;">
+
+        <div class="tourItemEveryDiv tourItemACtive">
+            <p class="textCenter tourItem">Package Name #1</p>
+            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
+        </div>
+
+        <div class="tourItemEveryDiv">
+            <p class="textCenter tourItem">Package Name #2</p>
+            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
+        </div>
+
+        <div class="tourItemEveryDiv">
+            <p class="textCenter tourItem">Package Name #2</p>
+            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
+        </div>
+
+        <div class="tourItemEveryDiv">
+            <p class="textCenter tourItem">Package Name #2</p>
+            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
+        </div>
+
+        <div class="tourItemEveryDiv">
+            <p class="textCenter tourItem">Package Name #2</p>
+            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
+        </div>
 
 
+
+
+
+    </div>
+</div>
+
+<div class="col-lg-10 col-md-10 col-sm-8 col-xs-8 right_side_dash">
+
+    <div class="row" style="height: 100px; float: right; position: relative; margin-top: 15px; margin-right: 10px;">
+        <img class="circle-image" src="https://en.opensuse.org/images/0/0b/Icon-user.png">
+        <div style="float: left; margin-right: 10px;">
+            <h4 class="colorBlack" style="margin-top: 10px; margin-bottom: 5px;">Zahidul Islam</h4>
+            <a href=""><h5 class="colorBlack" style="float: right; margin-top: 0px; margin-bottom: 0px; cursor: pointer">Logout</h5></a>
+        </div>
+    </div>
+
+    <div style="float: left; position: relative;">
+        <div class='dashbord-element'>
+            <img src='http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg' alt=''/>
+            <div class='desc-elemetn'>
+                <h2>Place Name</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis corporis cupiditate, doloremque eaque facere, fugiat harum impedit iste laudantium molestias porro possimus praesentium, ratione recusandae similique ullam velit! Quas?</p>
+                <input type="button" class="btn btn-info" value="Details" style="float: right"/>
+            </div>
+            <div class='clear'></div>
+        </div>
+
+        <div class='dashbord-element'>
+            <img src='http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg' alt=''/>
+            <div class='desc-elemetn'>
+                <h2>Place Name</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis corporis cupiditate, doloremque eaque facere, fugiat harum impedit iste laudantium molestias porro possimus praesentium, ratione recusandae similique ullam velit! Quas?</p>
+                <input type="button" class="btn btn-info" value="Details" style="float: right"/>
+            </div>
+            <div class='clear'></div>
+        </div>
+
+        <div class='dashbord-element'>
+            <img src='http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg' alt=''/>
+            <div class='desc-elemetn'>
+                <h2>Place Name</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis corporis cupiditate, doloremque eaque facere, fugiat harum impedit iste laudantium molestias porro possimus praesentium, ratione recusandae similique ullam velit! Quas?</p>
+                <input type="button" class="btn btn-info" value="Details" style="float: right"/>
+            </div>
+            <div class='clear'></div>
+        </div>
+
+        <div class='dashbord-element'>
+            <img src='http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg' alt=''/>
+            <div class='desc-elemetn'>
+                <h2>Place Name</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis corporis cupiditate, doloremque eaque facere, fugiat harum impedit iste laudantium molestias porro possimus praesentium, ratione recusandae similique ullam velit! Quas?</p>
+                <input type="button" class="btn btn-info" value="Details" style="float: right"/>
+            </div>
+            <div class='clear'></div>
+        </div>
+
+        <div class='dashbord-element'>
+            <img src='http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg' alt=''/>
+            <div class='desc-elemetn'>
+                <h2>Place Name</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis corporis cupiditate, doloremque eaque facere, fugiat harum impedit iste laudantium molestias porro possimus praesentium, ratione recusandae similique ullam velit! Quas?</p>
+                <input type="button" class="btn btn-info" value="Details" style="float: right"/>
+            </div>
+            <div class='clear'></div>
+        </div>
+
+        <div class='dashbord-element'>
+            <img src='http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg' alt=''/>
+            <div class='desc-elemetn'>
+                <h2>Place Name</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis corporis cupiditate, doloremque eaque facere, fugiat harum impedit iste laudantium molestias porro possimus praesentium, ratione recusandae similique ullam velit! Quas?</p>
+                <input type="button" class="btn btn-info" value="Details" style="float: right"/>
+            </div>
+            <div class='clear'></div>
+        </div>
+
+        <div class='dashbord-element'>
+            <img src='http://www.freebiesgallery.com/wp-content/uploads/2013/08/light-blue-background-3.jpg' alt=''/>
+            <div class='desc-elemetn'>
+                <h2>Place Name</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis corporis cupiditate, doloremque eaque facere, fugiat harum impedit iste laudantium molestias porro possimus praesentium, ratione recusandae similique ullam velit! Quas?</p>
+                <input type="button" class="btn btn-info" value="Details" style="float: right"/>
+            </div>
+            <div class='clear'></div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+</footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="~/Scripts/bootstrap.js"></script>
@@ -21,43 +148,45 @@
 
     <!-- Google Map Init-->
     <script type="text/javascript">
-    var lat = @ViewBag.place_lat;
-    var lng = @ViewBag.place_lng;
-    jQuery(function($){
-        $('.first-map, .map-holder').gmap3({
-            marker:{
-                address: '@ViewBag.place_lat, @ViewBag.place_lng'
-            },
-            map:{
-                options:{
-                    zoom: 16
-                    scrollwheel: false,
-                    streetViewControl : true
+        var lat = @ViewBag.place_lat;
+        var lng = @ViewBag.place_lng;
+        jQuery(function($){
+            $('.first-map, .map-holder').gmap3({
+                marker:{
+                    address: '@ViewBag.place_lat, @ViewBag.place_lng'
+                },
+                map:{
+                    options:{
+                        zoom: 16,
+                        scrollwheel: false,
+                        streetViewControl : true
+                    }
                 }
-            }
-        });
-    });
-
-
-    function initMap() {
-        var myLatLng = {lat: @ViewBag.place_lat, lng: @ViewBag.place_lng};
-
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: myLatLng,
-            scrollwheel: false,
-            zoom: 4
+            });
         });
 
-        // Create a marker and set its position.
-        var marker = new google.maps.Marker({
-            map: map,
-            position: myLatLng,
-            title: 'Hello World!'
-        });
-    }
+
+        function initMap() {
+            var myLatLng = {lat: @ViewBag.place_lat, lng: @ViewBag.place_lng};
+
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                scrollwheel: false,
+                zoom: 4
+            });
+
+            // Create a marker and set its position.
+            var marker = new google.maps.Marker({
+                map: map,
+                position: myLatLng,
+                title: 'Hello World!'
+            });
+        }
 
 
 
     </script>
 </body>
+
+</html>
