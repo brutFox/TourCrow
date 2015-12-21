@@ -14,9 +14,25 @@ namespace TourCrow.Controllers
         // GET: /Profile/
         TourCrowDBEntities tcdb = new TourCrowDBEntities();
 
+        [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Title = "Plan";
+            string username = Convert.ToString(Request["userName"]);
+            string fbId = Convert.ToString(Request["fbId"]);
+
+            if (username.IsNullOrWhiteSpace())
+            {
+                ViewBag.Title = username + "Profile";
+            }
+            else
+            {
+                ViewBag.Title = username + " | Profile";
+            }
+
+            ViewBag.username = username;
+            ViewBag.fbID = fbId;
+
+
             return View();
         }
 

@@ -141,7 +141,7 @@ p,span{
 .circle-image{
     height: 60px;
     width: 60px;
-    padding: 10px;
+
     border-radius: 100px;
     border: 1px solid #959595;
     transition: 300ms;
