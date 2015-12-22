@@ -13,15 +13,15 @@ namespace TourCrow.Controllers
         //
         // GET: /Profile/
         TourCrowDBEntities tcdb = new TourCrowDBEntities();
-        public string username = null;
-        public string fbId = null;
+        //public string username=;
+        //public string fbId = null;
         
 
         [HttpGet]
         public ActionResult Index()
         {
-            username = Convert.ToString(Request["userName"]);
-            fbId = Convert.ToString(Request["fbId"]);
+            string username = Convert.ToString(Request["userName"]);
+            string fbId = Convert.ToString(Request["fbId"]);
 
             if (username.IsNullOrWhiteSpace())
             {
@@ -35,7 +35,7 @@ namespace TourCrow.Controllers
             ViewBag.username = username;
             ViewBag.fbID = fbId;
 
-            showPackages();
+            showPackages(fbId);
 
             string email = Convert.ToString(Request["fbEmail"]);
             //Response.Write(email+"</br>");
@@ -47,17 +47,16 @@ namespace TourCrow.Controllers
 
             using (tcdb)
             {
-
-                var query = from usr in tcdb.USERs where usr.UserFBID == fbId.ToString() select usr;
-                var chkusr = query.Count();
+                //var query = from usr in tcdb.USERs where usr.UserFBID == fbId select usr;
+                //var chkusr = query.Count();
                 //Response.Write(chkusr);
                 try
                 {
+                    var query = from usr in tcdb.USERs where usr.UserFBID == fbId select usr;
+                    var chkusr = query.Count();
                     if (chkusr > 0 && pids.Length > 0)
                     {
                         insertPackage(pids, fbId, username, photos);
-
-
                     }
 
                     else if (chkusr <= 0 && pids.Length > 0)
@@ -71,8 +70,7 @@ namespace TourCrow.Controllers
                 }
                 catch (Exception)
                 {
-
-                    Response.Write("No Place Selected");
+                    //Response.Write("No Place Selected");
                 }
 
             }
@@ -80,9 +78,18 @@ namespace TourCrow.Controllers
             return View();
         }
 
-        public void showPackages()
+        public void showPackages(string fbId_new)
         {
-            
+            using (tcdb)
+            {
+                var pck_date = from pck in tcdb.PACKAGEs where pck.UserFBID == fbId_new.ToString() select pck.Date;
+                var check_pack = pck_date.ToList();
+                ViewBag.count_pack = pck_date.Count();
+                
+                ViewBag.packages = check_pack;
+            }
+
+            //return ("Index");
         }
 
         //[HttpGet]

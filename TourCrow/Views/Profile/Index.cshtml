@@ -14,35 +14,23 @@
     <div style="width: 100%; background: #999999; height: 1px; float: left; margin-top: 20px;"></div>
     <div style="margin-top: 100px;">
 
-        <div class="tourItemEveryDiv tourItemACtive">
-            <p class="textCenter tourItem">Package Name #1</p>
-            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
-        </div>
 
-        <div class="tourItemEveryDiv">
-            <p class="textCenter tourItem">Package Name #2</p>
-            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
-        </div>
+        @for (int i = (ViewBag.count_pack - 1); i > 0; i--)
+        {
+            
+                <div class="tourItemEveryDiv tourItemACtive">
+                    <p class="textCenter tourItem">
 
-        <div class="tourItemEveryDiv">
-            <p class="textCenter tourItem">Package Name #2</p>
-            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
-        </div>
+                        @ViewBag.packages[i]
 
-        <div class="tourItemEveryDiv">
-            <p class="textCenter tourItem">Package Name #2</p>
-            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
-        </div>
-
-        <div class="tourItemEveryDiv">
-            <p class="textCenter tourItem">Package Name #2</p>
-            <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
-        </div>
+                    </p>
+                    <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
+                </div>
+            
+        }
 
 
-
-
-
+        
     </div>
 </div>
 
