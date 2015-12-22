@@ -13,12 +13,15 @@ namespace TourCrow.Controllers
         //
         // GET: /Profile/
         TourCrowDBEntities tcdb = new TourCrowDBEntities();
+        public string username = null;
+        public string fbId = null;
+        
 
         [HttpGet]
         public ActionResult Index()
         {
-            string username = Convert.ToString(Request["userName"]);
-            string fbId = Convert.ToString(Request["fbId"]);
+            username = Convert.ToString(Request["userName"]);
+            fbId = Convert.ToString(Request["fbId"]);
 
             if (username.IsNullOrWhiteSpace())
             {
@@ -32,24 +35,19 @@ namespace TourCrow.Controllers
             ViewBag.username = username;
             ViewBag.fbID = fbId;
 
+            showPackages();
 
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult CheckSignIn()
-        {
-            string username = Convert.ToString(Request["userName"]);
-            string fbId = Convert.ToString(Request["fbId"]);
             string email = Convert.ToString(Request["fbEmail"]);
             //Response.Write(email+"</br>");
             string[] pids = Request.QueryString.GetValues("pid");
             string[] photos = Request.QueryString.GetValues("photoid");
             //Response.Write(username + "</br>" + fbId + "</br>"+pids[0]);
-            
+
+
+
             using (tcdb)
             {
-                
+
                 var query = from usr in tcdb.USERs where usr.UserFBID == fbId.ToString() select usr;
                 var chkusr = query.Count();
                 //Response.Write(chkusr);
@@ -76,16 +74,67 @@ namespace TourCrow.Controllers
 
                     Response.Write("No Place Selected");
                 }
-                
+
             }
 
-            return View("Index");
+            return View();
         }
+
+        public void showPackages()
+        {
+            
+        }
+
+        //[HttpGet]
+        //public ActionResult CheckSignIn()
+        //{
+        //    username = Convert.ToString(Request["userName"]);
+        //    fbId = Convert.ToString(Request["fbId"]);
+        //    string email = Convert.ToString(Request["fbEmail"]);
+        //    //Response.Write(email+"</br>");
+        //    string[] pids = Request.QueryString.GetValues("pid");
+        //    string[] photos = Request.QueryString.GetValues("photoid");
+        //    //Response.Write(username + "</br>" + fbId + "</br>"+pids[0]);
+            
+        //    using (tcdb)
+        //    {
+                
+        //        var query = from usr in tcdb.USERs where usr.UserFBID == fbId.ToString() select usr;
+        //        var chkusr = query.Count();
+        //        //Response.Write(chkusr);
+        //        try
+        //        {
+        //            if (chkusr > 0 && pids.Length > 0)
+        //            {
+        //                insertPackage(pids, fbId, username, photos);
+
+
+        //            }
+
+        //            else if (chkusr <= 0 && pids.Length > 0)
+        //            {
+        //                var user_insert_query = new USER { UserName = username, UserFBID = fbId };
+        //                tcdb.USERs.Add(user_insert_query);
+        //                tcdb.SaveChanges();
+
+        //                insertPackage(pids, fbId, username, photos);
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
+
+        //            Response.Write("No Place Selected");
+        //        }
+                
+        //    }
+
+        //    return View("Index");
+        //}
 
         private void insertPackage(string[] pids,string fbId,string username,string[] photos)
         {
             //insert package
-            var pack_insert_query = new PACKAGE { UserFBID = fbId };
+            var pack_insert_query = new PACKAGE { UserFBID = fbId, Date = DateTime.Now};
             tcdb.PACKAGEs.Add(pack_insert_query);
             tcdb.SaveChanges();
 
