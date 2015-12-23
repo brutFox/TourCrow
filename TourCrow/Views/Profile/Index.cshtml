@@ -15,9 +15,22 @@
     <div style="margin-top: 100px;">
 
 
-        @for (int i = (ViewBag.count_pack - 1); i > 0; i--)
+        @for (int i = ViewBag.count_pack-1; i > 0; i--)
         {
-            
+
+            if (i < (ViewBag.count_pack - 1))
+            {
+                <div class="tourItemEveryDiv">
+                    <p class="textCenter tourItem">
+
+                        @ViewBag.packages[i]
+
+                    </p>
+                    <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
+                </div>
+            }
+            else
+            {
                 <div class="tourItemEveryDiv tourItemACtive">
                     <p class="textCenter tourItem">
 
@@ -26,7 +39,9 @@
                     </p>
                     <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
                 </div>
-            
+            }
+
+
         }
 
 
