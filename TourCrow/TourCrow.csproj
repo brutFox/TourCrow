@@ -150,6 +150,7 @@
     <Compile Include="Models\PlaceProfileSearch.cs" />
     <Compile Include="Models\PlaceSearchModel.cs" />
     <Compile Include="Models\PlaceSuggestModel.cs" />
+    <Compile Include="Models\ProfilePageModel.cs" />
     <Compile Include="Models\RATING.cs">
       <DependentUpon>TourCrowDB.tt</DependentUpon>
     </Compile>
@@ -195,7 +196,9 @@
     <Content Include="Content\fonts\material-design-icons\LICENSE.txt" />
     <Content Include="Content\fonts\material-design-icons\Material-Design-Icons.svg" />
     <Content Include="Content\images\AjaxLoader.gif" />
+    <Content Include="Content\images\border-image.png" />
     <Content Include="Content\images\grabbing.png" />
+    <Content Include="Content\images\icons.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo1.png" />
     <Content Include="Content\images\main_image\birishiri.jpg" />
@@ -222,6 +225,7 @@
     <Content Include="Content\plan.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\SignInandSignUp\style.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\templatemo_misc.css" />
     <Content Include="Content\templatemo_style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -334,6 +338,11 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\fbsdk.js" />
+    <Content Include="Scripts\fileUpload\jquery.fileupload.js" />
+    <Content Include="Scripts\fileUpload\jquery.iframe-transport.js" />
+    <Content Include="Scripts\fileUpload\jquery.knob.js" />
+    <Content Include="Scripts\fileUpload\jquery.ui.widget.js" />
+    <Content Include="Scripts\fileUpload\script.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -387,8 +396,11 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
+    <Content Include="Views\Profile\fileup.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Album\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
