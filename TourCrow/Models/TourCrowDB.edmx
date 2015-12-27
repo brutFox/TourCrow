@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TourCrowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TourCrowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COMMENT">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -21,6 +21,7 @@
           <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar(max)" />
           <Property Name="UserFBID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
         </EntityType>
         <EntityType Name="RATING">
           <Key>
@@ -126,7 +127,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TourCrowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TourCrowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="COMMENT">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -144,6 +145,7 @@
           <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserFBID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="USER" Relationship="Self.FK_PACKAGE_USER" FromRole="PACKAGE" ToRole="USER" />
           <NavigationProperty Name="USER_PACKAGE" Relationship="Self.FK_USER_PACKAGE_PACKAGE" FromRole="PACKAGE" ToRole="USER_PACKAGE" />
         </EntityType>
@@ -274,6 +276,7 @@
                 <ScalarProperty Name="PackageID" ColumnName="PackageID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="UserFBID" ColumnName="UserFBID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

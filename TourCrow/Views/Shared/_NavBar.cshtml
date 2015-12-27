@@ -90,7 +90,9 @@
         function _onlyLogin() {
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    location.reload();
+                    FB.api('/me', function(response) {
+                        window.location.replace("/Profile?userName="+response.name+"&fbId="+response.id);
+                    });
                 } else {
                     FB.login(function(response) {
                         // handle the response
@@ -257,7 +259,6 @@
                         <li class="active"><a href="plan.html">Plan</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="login.html">Login</a></li>
-                        <li><a href="registration.html">Registration</a></li>
                     </ul>
                 </div> <!-- /.menu-responsive -->
             </div> <!-- /.col-md-12 -->

@@ -23,23 +23,25 @@
 
     <script>
 
-        $(document).ready(function(){
-            if (@ViewBag.activePage == "Plan") {
-                $("#plan_nav").addClass("active");
+    $(document).ready(function(){
+        if (@ViewBag.activePage === 'Plan') {
+            $("#plan_nav").addClass("active");
 
-            }
-            else if (@ViewBag.activePage == "Home") {
-                $("#home_nav").addClass("active");
+        }
+        else if (@ViewBag.activePage === 'Home') {
+            $("#home_nav").addClass("active");
 
-            }
-            else if (@ViewBag.activePage == "SignIn") {
-                $("#signin_nav").addClass("active");
+        }
+        else if (@ViewBag.activePage === 'SignIn') {
+            $("#signin_nav").addClass("active");
 
-            }
-            else if (@ViewBag.activePage == "About") {
-                $("#about_nav").addClass("active");
+        }
+        else if (@ViewBag.activePage === 'About') {
+            $("#about_nav").addClass("active");
 
-            }
+        } else if (@ViewBag.activePage === 'Profile') {
+                $("#profile_nav").addClass("active");
+        }
         });
 
     </script>
@@ -159,17 +161,22 @@
                 if (response.status === 'connected') {
                     // Get name and Id
                     FB.api('/me', function(newResponse) {
-                        document.getElementById("signin_nav").innerHTML = "<a>"+newResponse.name+"</a>";
+                        document.getElementById("signin_nav").innerHTML = "<a>" + newResponse.name + "</a>";
 
                     });
                 } else if (response.status === 'not_authorized') {
                     document.getElementById("signin_nav").innerHTML = "<a> Login </a>";
-                }
-                else if (response.status === 'unknown') {
+                } else if (response.status === 'unknown') {
                     document.getElementById("signin_nav").innerHTML = "<a> Login </a>";
                 }
             });
         });
+    </script>
+
+    <script>
+    function tourlist() {
+        //something
+    }
     </script>
 
 
@@ -178,7 +185,7 @@
 
 </head>
 
-<body>
+<body onload="tourlist()">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="background: transparent; border: 0px; box-shadow: unset; margin-top: 60px;">
@@ -220,7 +227,7 @@
 
     <script src="~/Scripts/bootstrap.js"></script>
 
-    
+
 </body>
 
 </html>

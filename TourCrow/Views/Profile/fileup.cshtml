@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mini Ajax File Upload Form</title>
+
+    <!-- Google web fonts -->
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+
+    <!-- The main CSS file -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+   @using (Html.BeginForm("fileupload", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+   {
+    @*@Html.TextBox("file", null, new { Type = "file", Class = "form-control", Id = "file" })*@
+    <input class="form-control" id="file" type="file" id="file" name="file" type="text" value="" multiple=""/>
+    <br />
+    <input type="submit" class="btn btn-sm btn-success pull-right" name="Submit" id="Submit" value="Upload" />
+   }
+
+<form id="upload" method="post" action="localhost:49383/Profile/fileupload" enctype="multipart/form-data">
+    <div id="drop">
+        Drop Here
+
+        <a>Browse</a>
+        <input type="file" name="upl" multiple/>
+    </div>
+
+    <ul>
+        <!-- The file uploads will be shown here -->
+    </ul>
+    @*<input type="submit" name="imgSubmit" id="imgSubmit" />*@
+
+</form>
+
+<!-- JavaScript Includes -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="~/Scripts/fileUpload/jquery.knob.js"></script>
+
+<!-- jQuery File Upload Dependencies -->
+<script src="~/Scripts/fileUpload/jquery.ui.widget.js"></script>
+<script src="~/Scripts/fileUpload/jquery.iframe-transport.js"></script>
+<script src="~/Scripts/fileUpload/jquery.fileupload.js"></script>
+
+<!-- Our main JS file -->
+<script src="~/Scripts/fileUpload/script.js"></script>
+
+
+
+</body>
+</html>

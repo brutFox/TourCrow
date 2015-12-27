@@ -38,23 +38,8 @@
                     </div>
                 </div>
                 <div class="plan-day-list">
-                    @*<div class="day-number-show">
-                        <h2>Days</h2>
-                        <div class="no-day no-day-active">
-                            <p>1</p>
-                        </div>
-                        <div class="no-day">
-                            <p>2</p>
-                        </div>
-                        <div class="no-day">
-                            <p>3</p>
-                        </div>
-                        <div class="no-day">
-                            <p>4</p>
-                        </div>
-                    </div>*@
-
-                    @using (Html.BeginForm("CheckSignIn", "Profile", FormMethod.Get, new {id = "testForm"}))
+                    
+                    @using (Html.BeginForm("Index", "Profile", FormMethod.Get, new {id = "testForm"}))
                     {
 
                         <div class="plan-main-element" id="plan_list">
@@ -63,7 +48,7 @@
 
                         <input type="hidden" id="userName" name="userName"/>
                         <input type="hidden" name="fbId" id="fbId"/>
-
+                        <input type="text" name="packName" id="packName" class="search-page-for-planing" placeholder="Package Name"/>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-lg" onclick=" _login(); ">
                             Submit
