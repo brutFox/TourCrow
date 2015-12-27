@@ -18,6 +18,9 @@ namespace TourCrow.App_Start
         //public static string GOOGLE_PLACE_API_KEY = "AIzaSyCZlACdmjz340y_OKjeKf0CRzyV5Ipd0so";
 
         //zahid
-        public static string GOOGLE_PLACE_API_KEY = "AIzaSyCSRXTF9nWyECowpOmrihkoCMtnJmVQQQo";
+        //public static string GOOGLE_PLACE_API_KEY = "AIzaSyCSRXTF9nWyECowpOmrihkoCMtnJmVQQQo";
+
+        //panda
+        public static string GOOGLE_PLACE_API_KEY = "AIzaSyB1MgCvczQcpXBq3qNOKkiihxx6BKXzYTY";
     }
 }

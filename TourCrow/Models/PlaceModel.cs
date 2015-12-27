@@ -72,7 +72,25 @@ namespace TourCrow.Models
             public string photo_reference { get; set; }
         }
 
-        
+        //public class PlaceDistanceModel
+        //{
+        //    public string status { get; set; }
+        //    public List<RouteModel> routes { get; set; }
+
+        //    public class RouteModel
+        //    {
+        //        public List<LegModel> legs { get; set; }
+        //        public class LegModel 
+        //        {
+        //            public string distance { get; set; }
+        //            public string duration { get; set; }
+        //            public string end_address { get; set; }
+        //            public string end_location { double lat;  double lng;}
+
+
+        //        }
+        //    }
+        //}
 
         //public class PlaceModel
         //{

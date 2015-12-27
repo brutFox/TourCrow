@@ -173,6 +173,51 @@ namespace TourCrow.Controllers
 
             return urlAddress;
         }
+        //sakib
+
+        public static string place_direction(double cur_lat, double cur_lng, double[] dest_lat, double[] dest_lng)
+        {
+            //string urlAddress = "https://maps.googleapis.com/maps/api/directions/json?origin=" + lng + "," + lat + "&destination" + lng + "," + lat + "&key=" + appKeys.GOOGLE_PLACE_API_KEY;
+
+            int i = dest_lat.Length;
+            int j = dest_lng.Length;
+
+              for (int y = 0; y < j; y++)
+                {
+                    string urlAddress = "https://www.google.com.bd/maps/dir/" + cur_lat + "," + cur_lng + "/" + dest_lat + "," + dest_lng;
+
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        Stream receiveStream = response.GetResponseStream();
+                        StreamReader readStream = null;
+
+                        if (response.CharacterSet == null)
+                        {
+                            readStream = new StreamReader(receiveStream);
+                        }
+                        else
+                        {
+                            readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                        }
+
+                        string data = readStream.ReadToEnd();
+
+                        response.Close();
+                        readStream.Close();
+                        return data;
+                    }
+
+                           }
+            return null;
+        }
+ 
+
+        //public static string embed_place()
+        //{ return null; }
 
         public static string Place_id(string place_id)
         {
