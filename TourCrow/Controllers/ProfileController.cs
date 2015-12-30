@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 using Microsoft.Ajax.Utilities;
 using TourCrow.App_Start;
 using TourCrow.Models;
@@ -22,14 +23,16 @@ namespace TourCrow.Controllers
         //public string fbId = null;
         //public string packName = null;
         //public string packName;
+        public int packId;
+        public int pth, i=0;
         [HttpGet]
         public ActionResult Index()
         {
             string username = Convert.ToString(Request["userName"]);
             string fbId = Convert.ToString(Request["fbId"]);
             string packName;
-            int packId= Convert.ToInt32(Request["packid"]);
-        
+            packId= Convert.ToInt32(Request["packid"]);
+            ViewBag.packID = packId;
             DateTime now = DateTime.Now;
 
             ViewBag.name = username;
@@ -144,7 +147,7 @@ namespace TourCrow.Controllers
                 var pck_id = from pid in packcon.PACKAGEs where pid.UserFBID == fbId_new select pid.PackageID;
                 var check_pid = pck_id.ToList();
                 ViewBag.pid = check_pid;
-
+ 
 
             }
             //return ("Index");
@@ -186,53 +189,7 @@ namespace TourCrow.Controllers
             ProfilePageModel.RootObject model = js.Deserialize<ProfilePageModel.RootObject>(json);
             return model;
         }
-
-        //[HttpGet]
-        //public ActionResult CheckSignIn()
-        //{
-        //    username = Convert.ToString(Request["userName"]);
-        //    fbId = Convert.ToString(Request["fbId"]);
-        //    string email = Convert.ToString(Request["fbEmail"]);
-        //    //Response.Write(email+"</br>");
-        //    string[] pids = Request.QueryString.GetValues("pid");
-        //    string[] photos = Request.QueryString.GetValues("photoid");
-        //    //Response.Write(username + "</br>" + fbId + "</br>"+pids[0]);
-            
-        //    using (tcdb)
-        //    {
-                
-        //        var query = from usr in tcdb.USERs where usr.UserFBID == fbId.ToString() select usr;
-        //        var chkusr = query.Count();
-        //        //Response.Write(chkusr);
-        //        try
-        //        {
-        //            if (chkusr > 0 && pids.Length > 0)
-        //            {
-        //                insertPackage(pids, fbId, username, photos);
-
-
-        //            }
-
-        //            else if (chkusr <= 0 && pids.Length > 0)
-        //            {
-        //                var user_insert_query = new USER { UserName = username, UserFBID = fbId };
-        //                tcdb.USERs.Add(user_insert_query);
-        //                tcdb.SaveChanges();
-
-        //                insertPackage(pids, fbId, username, photos);
-        //            }
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //            Response.Write("No Place Selected");
-        //        }
-                
-        //    }
-
-        //    return View("Index");
-        //}
-
+        
         private void insertPackage(string[] pids,string fbId,string username,string[] photos, string packName, DateTime now)
         {
             //insert package
@@ -276,12 +233,15 @@ namespace TourCrow.Controllers
             {
                 if (f != null && f.ContentLength > 0 )
                 {
+                    string pcki = Convert.ToString(Request["pck"]);
                     string extension = Path.GetExtension(f.FileName);
                     var fileName = Path.GetFileName(f.FileName);
+                    var p = Server.MapPath("~/Content/Album/");
+                    Directory.CreateDirectory(p);
                     //var fileName = f + extension;
-                    var path = Path.Combine(Server.MapPath("~/Content/Album"), fileName);
+                    var path = Path.Combine(p, fileName);
                     f.SaveAs(path);
-
+                    
                 }
                 else
                 {
@@ -290,7 +250,7 @@ namespace TourCrow.Controllers
             }
 
             //return RedirectToAction("Index", HttpContext.User.Identity.Name.Split('|')[1].ToString());
-            return View("fileup");
+            return View("Index");
         }
 
     }

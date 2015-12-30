@@ -26,18 +26,99 @@ namespace TourCrow.Controllers
 
         //private TourCrowDBEntities tcdb = new TourCrowDBEntities();
         public string search_val = "null";
-        
+        public int packId;
         [HttpGet]
         public ActionResult Index()
         {
             ViewBag.Title = "Plan";
             ViewBag.activePage = "Plan";
+            string username = Convert.ToString(Request["userName"]);
+            string fbId = Convert.ToString(Request["fbId"]);
+            string packName;
+            packId = Convert.ToInt32(Request["packid"]);
+            ViewBag.packID = packId;
+            DateTime now = DateTime.Now;
 
+            ViewBag.name = username;
+            ViewBag.id = fbId;
             search_val = Convert.ToString(Request["search"]) == null ? "null" : Convert.ToString(Request["search"]);
 
             ViewBag.pageGetValue = search_val;
 
+            string email = Convert.ToString(Request["fbEmail"]);
+            //Response.Write(email+"</br>");
+            string[] pids = Request.QueryString.GetValues("pid");
+            string[] photos = Request.QueryString.GetValues("photoid");
+            if (Request["packName"] == "")
+            {
+                packName = DateTime.Now.ToString();
+            }
+            else
+            {
+                packName = Convert.ToString(Request["packName"]);
+            }
+
+            using (var context = new TourCrowDBEntities())
+            {
+                //var query = from usr in tcdb.USERs where usr.UserFBID == fbId select usr;
+                //var chkusr = query.Count();
+                //Response.Write(chkusr);
+                try
+                {
+                    var query = from usr in context.USERs where usr.UserFBID == fbId select usr;
+                    var chkusr = query.Count();
+                    if (chkusr > 0 && pids.Length > 0)
+                    {
+                        insertPackage(pids, fbId, username, photos, packName, now);
+                    }
+
+                    else if (chkusr <= 0 && pids.Length > 0)
+                    {
+                        var user_insert_query = new USER { UserName = username, UserFBID = fbId };
+                        context.USERs.Add(user_insert_query);
+                        context.SaveChanges();
+
+                        insertPackage(pids, fbId, username, photos, packName, now);
+                    }
+                }
+                catch (Exception)
+                {
+                    //Response.Write("No Place Selected");
+                }
+
+            }
+
             return View();
+        }
+
+        private void insertPackage(string[] pids, string fbId, string username, string[] photos, string packName, DateTime now)
+        {
+            //insert package
+            using (var dbcon = new TourCrowDBEntities())
+            {
+
+                var pack_insert_query = new PACKAGE { UserFBID = fbId, Date = now, Title = packName };
+                dbcon.PACKAGEs.Add(pack_insert_query);
+                dbcon.SaveChanges();
+                //( packName.ToString() == null ? Convert.ToString(DateTime.Now) : packName.ToString() )
+                //get package id
+                var get_packid = from pckid in dbcon.PACKAGEs
+                                 where pckid.UserFBID == fbId.ToString()
+                                 select pckid.PackageID;
+                var packid = get_packid.AsEnumerable().LastOrDefault();
+
+                for (int i = 0, j = 0; i < pids.Count() && j < photos.Count(); i++, j++)
+                {
+                    var userpack_insert_query = new USER_PACKAGE
+                    {
+                        PackageID = Convert.ToInt32(packid),
+                        PlaceID = pids[i],
+                        PhotoKey = photos[i]
+                    };
+                    dbcon.USER_PACKAGE.Add(userpack_insert_query);
+                    dbcon.SaveChanges();
+                }
+            }
         }
 
         [HttpPost]
@@ -250,6 +331,15 @@ namespace TourCrow.Controllers
 
 
             return View("");
+        }
+        public double[] latway;
+        public double[] lngway;
+        public string showMap(double latorigin, double lngorigin, double[] latdest, double[] lngdest)
+        {
+            
+            string mapURL = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyAX1EHCUo6oibCxw3gKDuot3r6B-2wrm2s&origin="+latorigin+","+lngorigin+"&destination="+latdest[latdest.Length-1]+","+lngdest[lngdest.Length-1]+"&avoid=tolls|highways&waypoints=";
+
+            return mapURL;
         }
 
        

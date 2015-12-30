@@ -30,5 +30,6 @@ namespace TourCrow.Models
         public virtual DbSet<RATING> RATINGs { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
         public virtual DbSet<USER_PACKAGE> USER_PACKAGE { get; set; }
+        public virtual DbSet<IMAGE> IMAGEs { get; set; }
     }
 }

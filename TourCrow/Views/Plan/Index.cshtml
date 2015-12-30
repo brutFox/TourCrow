@@ -39,7 +39,7 @@
                 </div>
                 <div class="plan-day-list">
                     
-                    @using (Html.BeginForm("Index", "Profile", FormMethod.Get, new {id = "testForm"}))
+                    @using (Html.BeginForm("Index", "Plan", FormMethod.Get, new {id = "testForm"}))
                     {
 
                         <div class="plan-main-element" id="plan_list">
@@ -84,41 +84,6 @@
 <!-- Google Map Init-->
 <script type="text/javascript">
     
-    /*jQuery(function($) {
-        $('.map-holder').gmap3({
-            marker: {
-                address: '23.7808875, 90.2792399',
-                visibility: false
-            },
-            map: {
-                options: {
-                    zoom: 7,
-                    scrollwheel: false,
-                    streetViewControl: true
-                }
-            }
-        });
-    });
-
-
-    function initMap() {
-        var myLatLng = { lat: 23.7808875, lng: 90.2792399 };
-
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: myLatLng,
-            scrollwheel: false,
-            zoom: 4
-        });
-
-        // Create a marker and set its position.
-        var marker = new google.maps.Marker({
-            map: map,
-            position: myLatLng,
-            title: 'Hello World!'
-        });
-    }*/
-
     var longitudeArr = new Array();
     var latitudeArr = new Array();
     var mapArr = new Array();

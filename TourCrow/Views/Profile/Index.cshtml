@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 
-
 <body>
 
 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 left_side_dash">
@@ -22,8 +21,8 @@
             {
                 @Html.BeginForm("Index", "Profile", FormMethod.Get)
                 {
-                    <div class="tourItemEveryDiv" type="submit">
-                        <a href="?userName=@(ViewBag.name)&fbId=@(ViewBag.id)&packid=@(ViewBag.pid[i])">
+                    <div class="tourItemEveryDiv">
+                        <a href="?userName=@(ViewBag.name)&fbId=@(ViewBag.id)&packid=@(ViewBag.pid[i])" onclick="showhide();">
                             <p class="textCenter tourItem">
 
                                 @ViewBag.packages[i]
@@ -38,12 +37,13 @@
             else
             {
                 <div class="tourItemEveryDiv tourItemACtive">
-                    <a href="?userName=@(ViewBag.name)&fbId=@(ViewBag.id)&packid=@(ViewBag.pid[i])">
+                    <a href="?userName=@(ViewBag.name)&fbId=@(ViewBag.id)&packid=@(ViewBag.pid[i])" onclick="showhide();">
                         <p class="textCenter tourItem">
 
                             @ViewBag.packages[i]
 
-                    </p></a>
+                        </p>
+                    </a>
                     <div style="width: 100%; background: #999999; height: 1px; float: left;"></div>
                 </div>
             }
@@ -62,7 +62,7 @@
         <img class="circle-image" src="https://graph.facebook.com/@(ViewBag.fbID)/picture?type=large" alt="https://en.opensuse.org/images/0/0b/Icon-user.png">
         <div style="float: left; margin-right: 10px;">
             <h4 class="colorBlack" style="margin-top: 10px; margin-bottom: 5px;">@(ViewBag.username)</h4>
-            <a href=""><h5 class="colorBlack" style="float: right; margin-top: 0px; margin-bottom: 0px; cursor: pointer">Logout</h5></a>
+            <a href="" onclick="logout();"><h5 class="colorBlack" style="float: right; margin-top: 0px; margin-bottom: 0px; cursor: pointer">Logout</h5></a>
         </div>
     </div>
 
@@ -71,7 +71,7 @@
         @for (int i= 0 ; i<ViewBag.pck_count; i++)
         {
             <div class='dashbord-element' id="place_div" name="place_div">
-                <img src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=@ViewBag.pimg[i]&key=AIzaSyCSRXTF9nWyECowpOmrihkoCMtnJmVQQQo' alt='' />
+                <img src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=@ViewBag.pimg[i]&key=AIzaSyCSRXTF9nWyECowpOmrihkoCMtnJmVQQQo' alt=''/>
                 <div class='desc-elemetn'>
                     <h2>@ViewBag.pname[i]</h2>
                     <p>@ViewBag.padd[i]</p>
@@ -79,15 +79,29 @@
                 </div>
                 <div class='clear'></div>
             </div>
+            
         }
-    </div>
-    @Html.ActionLink("upload","fileup","Profile")
-    
+        
+        
+        @*<div id="imgup" name="imgup" >
+
+            @using (Html.BeginForm("fileupload", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                
+                <input class="" id="file" type="file" id="file" name="file" type="text" value="" multiple=""/>
+                <input type="hidden" value="@ViewBag.packID" name="pck" id="pck"/>
+                <input type="submit" class="btn btn-sm btn-success pull-right" name="Submit" id="Submit" value="Upload" />
+            }
+        </div>*@
 </div>
+    
+        
+    
+
 
 <footer>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>') </script>
@@ -99,9 +113,33 @@
 
 <script>
     $('#myModal').on('shown.bs.modal', function() {
-        $('#myInput').focus()
+        $('#myInput').focus();
     })
+
+
 </script>
+<script>
+    function logout() {
+        FB.logout(function(response) {
+            // user is now logged out
+        });    
+        window.location.replace("/Home");
+    }
+    
+</script>
+
+    <script>
+        var hidden = false;
+        function showhide() {
+            //hidden = this.hidden;
+            if(hidden) {
+                document.getElementById('imgup').style.visibility = 'hidden';
+            } else {
+                document.getElementById('imgup').style.visibility = 'visible';
+            }
+        
+        }
+    </script>
 
 <!-- Google Map Init-->
 <script type="text/javascript">
@@ -145,4 +183,3 @@
 </script>
 </body>
 
-</html>

@@ -143,6 +143,9 @@
     <Compile Include="Models\COMMENT.cs">
       <DependentUpon>TourCrowDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IMAGE.cs">
+      <DependentUpon>TourCrowDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PACKAGE.cs">
       <DependentUpon>TourCrowDB.tt</DependentUpon>
     </Compile>

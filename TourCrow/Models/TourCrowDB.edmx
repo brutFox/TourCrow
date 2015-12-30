@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TourCrowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TourCrowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COMMENT">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -13,6 +13,14 @@
           <Property Name="UserFBID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PlaceID" Type="varchar(max)" Nullable="false" />
           <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="IMAGE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="Path" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="PACKAGE">
           <Key>
@@ -64,6 +72,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_IMAGE_PACKAGE">
+          <End Role="PACKAGE" Type="Self.PACKAGE" Multiplicity="1" />
+          <End Role="IMAGE" Type="Self.IMAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACKAGE">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="IMAGE">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PACKAGE_USER">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
           <End Role="PACKAGE" Type="Self.PACKAGE" Multiplicity="*" />
@@ -102,6 +122,7 @@
         </Association>
         <EntityContainer Name="TourCrowModelStoreContainer">
           <EntitySet Name="COMMENT" EntityType="Self.COMMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGE" EntityType="Self.IMAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PACKAGE" EntityType="Self.PACKAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RATING" EntityType="Self.RATING" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
@@ -109,6 +130,10 @@
           <AssociationSet Name="FK_COMMENT_USER" Association="Self.FK_COMMENT_USER">
             <End Role="USER" EntitySet="USER" />
             <End Role="COMMENT" EntitySet="COMMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMAGE_PACKAGE" Association="Self.FK_IMAGE_PACKAGE">
+            <End Role="PACKAGE" EntitySet="PACKAGE" />
+            <End Role="IMAGE" EntitySet="IMAGE" />
           </AssociationSet>
           <AssociationSet Name="FK_PACKAGE_USER" Association="Self.FK_PACKAGE_USER">
             <End Role="USER" EntitySet="USER" />
@@ -123,8 +148,7 @@
             <End Role="USER_PACKAGE" EntitySet="USER_PACKAGE" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TourCrowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -148,6 +172,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="USER" Relationship="Self.FK_PACKAGE_USER" FromRole="PACKAGE" ToRole="USER" />
           <NavigationProperty Name="USER_PACKAGE" Relationship="Self.FK_USER_PACKAGE_PACKAGE" FromRole="PACKAGE" ToRole="USER_PACKAGE" />
+          <NavigationProperty Name="IMAGEs" Relationship="TourCrowModel.FK_IMAGE_PACKAGE" FromRole="PACKAGE" ToRole="IMAGE" />
         </EntityType>
         <EntityType Name="RATING">
           <Key>
@@ -253,7 +278,33 @@
             <End Role="USER" EntitySet="USERs" />
             <End Role="RATING" EntitySet="RATINGs" />
           </AssociationSet>
+          <EntitySet Name="IMAGEs" EntityType="TourCrowModel.IMAGE" />
+          <AssociationSet Name="FK_IMAGE_PACKAGE" Association="TourCrowModel.FK_IMAGE_PACKAGE">
+            <End Role="PACKAGE" EntitySet="PACKAGEs" />
+            <End Role="IMAGE" EntitySet="IMAGEs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="IMAGE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PACKAGE" Relationship="TourCrowModel.FK_IMAGE_PACKAGE" FromRole="IMAGE" ToRole="PACKAGE" />
+        </EntityType>
+        <Association Name="FK_IMAGE_PACKAGE">
+          <End Type="TourCrowModel.PACKAGE" Role="PACKAGE" Multiplicity="1" />
+          <End Type="TourCrowModel.IMAGE" Role="IMAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACKAGE">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="IMAGE">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -309,6 +360,15 @@
                 <ScalarProperty Name="PlaceID" ColumnName="PlaceID" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="PhotoKey" ColumnName="PhotoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGEs">
+            <EntityTypeMapping TypeName="TourCrowModel.IMAGE">
+              <MappingFragment StoreEntitySet="IMAGE">
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

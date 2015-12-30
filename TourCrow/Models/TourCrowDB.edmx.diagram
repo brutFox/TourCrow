@@ -14,6 +14,8 @@
         <AssociationConnector Association="TourCrowModel.FK_PACKAGE_USER" ManuallyRouted="false" />
         <AssociationConnector Association="TourCrowModel.FK_USER_PACKAGE_PACKAGE" ManuallyRouted="false" />
         <AssociationConnector Association="TourCrowModel.FK_RATING_USER" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TourCrowModel.IMAGE" Width="1.5" PointX="5.25" PointY="7.125" />
+        <AssociationConnector Association="TourCrowModel.FK_IMAGE_PACKAGE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
