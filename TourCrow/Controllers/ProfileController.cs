@@ -241,6 +241,12 @@ namespace TourCrow.Controllers
                     //var fileName = f + extension;
                     var path = Path.Combine(p, fileName);
                     f.SaveAs(path);
+
+                    using (var fileup = new TourCrowDBEntities())
+                    {
+                        var qry = new IMAGE {Path = path};
+                        fileup.IMAGEs.Add(qry);
+                    }
                     
                 }
                 else
